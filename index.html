@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mining Ops — Inventory</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+  :root {
+    --bg: #0a0c10;
+    --surface: #111318;
+    --surface2: #181b22;
+    --surface3: #1e2130;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #e2e4ed;
+    --muted: #6b7280;
+    --amber: #f59e0b;
+    --amber-dim: rgba(245,158,11,0.12);
+    --green: #10b981;
+    --green-dim: rgba(16,185,129,0.1);
+    --red: #ef4444;
+    --red-dim: rgba(239,68,68,0.1);
+    --blue: #3b82f6;
+    --blue-dim: rgba(59,130,246,0.1);
+    --purple: #8b5cf6;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --radius: 8px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; line-height: 1.5; height: 100vh; overflow: hidden; }
+
+  /* ── LAYOUT ── */
+  .app { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+  .topbar { background: var(--surface); border-bottom: 1px solid var(--border2); padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+  .topbar-left { display: flex; align-items: center; gap: 16px; }
+  .logo { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
+  .logo span { color: var(--amber); }
+  .sync-status { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+  .sync-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+  .sync-dot.loading { background: var(--amber); animation: pulse 1s infinite; }
+  .sync-dot.error { background: var(--red); }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  .main { display: flex; flex: 1; overflow: hidden; min-height: 0; }
+  .sidebar { width: 220px; background: var(--surface); border-right: 1px solid var(--border); padding: 16px 12px; flex-shrink: 0; overflow-y: auto; }
+  .content { flex: 1; overflow: hidden; display: flex; flex-direction: column; min-height: 0; }
+
+  /* ── SIDEBAR ── */
+  .sidebar-section { margin-bottom: 24px; }
+  .sidebar-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; margin-bottom: 8px; padding: 0 8px; }
+  .nav-item { display: flex; align-items: center; gap: 8px; padding: 7px 8px; border-radius: 6px; cursor: pointer; font-size: 13px; color: var(--muted); transition: all 0.15s; border: none; background: none; width: 100%; text-align: left; }
+  .nav-item:hover { background: var(--surface2); color: var(--text); }
+  .nav-item.active { background: var(--amber-dim); color: var(--amber); }
+  .nav-icon { font-size: 15px; width: 18px; text-align: center; }
+
+  .stat-card { background: var(--surface2); border-radius: var(--radius); padding: 12px; margin-bottom: 8px; border: 1px solid var(--border); }
+  .stat-card .stat-val { font-size: 22px; font-weight: 700; color: #fff; }
+  .stat-card .stat-lab { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .stat-card.green .stat-val { color: var(--green); }
+  .stat-card.amber .stat-val { color: var(--amber); }
+  .stat-card.red .stat-val { color: var(--red); }
+
+  /* ── TOOLBAR ── */
+  .toolbar { padding: 12px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; background: var(--surface); flex-shrink: 0; }
+  .search-box { flex: 1; min-width: 200px; max-width: 320px; position: relative; }
+  .search-box input { width: 100%; background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--radius); padding: 7px 12px 7px 32px; color: var(--text); font-size: 13px; outline: none; }
+  .search-box input:focus { border-color: var(--amber); }
+  .search-box .search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 13px; }
+  select.filter { background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--radius); padding: 7px 10px; color: var(--text); font-size: 13px; outline: none; cursor: pointer; }
+  select.filter:focus { border-color: var(--amber); }
+
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: var(--radius); font-size: 13px; font-weight: 500; cursor: pointer; border: none; transition: all 0.15s; white-space: nowrap; }
+  .btn-primary { background: var(--amber); color: #000; }
+  .btn-primary:hover { background: #f0a500; }
+  .btn-secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border2); }
+  .btn-secondary:hover { background: var(--surface3); border-color: var(--border2); }
+  .btn-danger { background: var(--red-dim); color: var(--red); border: 1px solid rgba(239,68,68,0.2); }
+  .btn-danger:hover { background: rgba(239,68,68,0.2); }
+  .btn-sm { padding: 4px 10px; font-size: 12px; }
+
+  /* ── TABLE ── */
+  .table-wrap { flex: 1; overflow-y: auto; overflow-x: auto; padding: 0; min-height: 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { position: sticky; top: 0; z-index: 10; }
+  thead tr { background: var(--surface2); }
+  th { padding: 10px 14px; text-align: left; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); white-space: nowrap; border-bottom: 1px solid var(--border2); cursor: pointer; user-select: none; }
+  th:hover { color: var(--text); }
+  th.sorted { color: var(--amber); }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  tbody tr:hover { background: rgba(255,255,255,0.02); }
+  tbody tr.selected { background: var(--amber-dim); }
+  .cb { width: 16px; height: 16px; cursor: pointer; accent-color: var(--amber); }
+
+  /* ── STATUS BADGE ── */
+  .badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 20px; white-space: nowrap; max-width: 200px; overflow: hidden; text-overflow: ellipsis; }
+  .badge-mining { background: var(--green-dim); color: var(--green); border: 1px solid rgba(16,185,129,0.2); }
+  .badge-warehouse { background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(59,130,246,0.2); }
+  .badge-faulty { background: var(--red-dim); color: var(--red); border: 1px solid rgba(239,68,68,0.2); }
+  .badge-repair { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(245,158,11,0.2); }
+  .badge-ready { background: rgba(139,92,246,0.1); color: var(--purple); border: 1px solid rgba(139,92,246,0.2); }
+  .badge-default { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+
+  .serial-cell { font-family: var(--mono); font-size: 11px; color: var(--amber); }
+  .loc-cell { font-family: var(--mono); font-size: 12px; }
+  .hash-cell { font-family: var(--mono); font-size: 12px; color: var(--green); }
+
+  /* ── PAGINATION ── */
+  .pagination { padding: 10px 20px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; background: var(--surface); }
+  .page-info { font-size: 12px; color: var(--muted); }
+  .page-btns { display: flex; gap: 4px; }
+  .page-btn { background: var(--surface2); border: 1px solid var(--border2); color: var(--text); padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 12px; }
+  .page-btn:hover { background: var(--surface3); }
+  .page-btn.active { background: var(--amber); color: #000; border-color: var(--amber); }
+  .page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* ── MODAL ── */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px; }
+  .modal { background: var(--surface); border: 1px solid var(--border2); border-radius: 12px; width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto; }
+  .modal-header { padding: 20px 24px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .modal-header h3 { font-size: 16px; font-weight: 600; color: #fff; }
+  .modal-close { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 18px; padding: 4px; }
+  .modal-close:hover { color: var(--text); }
+  .modal-body { padding: 20px 24px; }
+  .modal-footer { padding: 16px 24px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 10px; }
+
+  .form-group { margin-bottom: 16px; }
+  .form-label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; display: block; }
+  .form-input { width: 100%; background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--radius); padding: 8px 12px; color: var(--text); font-size: 13px; outline: none; }
+  .form-input:focus { border-color: var(--amber); }
+  textarea.form-input { resize: vertical; min-height: 80px; font-family: inherit; }
+  select.form-input { cursor: pointer; }
+
+  /* ── TOAST ── */
+  .toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 200; display: flex; flex-direction: column; gap: 8px; }
+  .toast { background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--radius); padding: 12px 16px; font-size: 13px; display: flex; align-items: center; gap: 10px; min-width: 280px; animation: slideIn 0.2s ease; }
+  .toast.success { border-left: 3px solid var(--green); }
+  .toast.error { border-left: 3px solid var(--red); }
+  .toast.info { border-left: 3px solid var(--blue); }
+  @keyframes slideIn { from{transform:translateX(100%);opacity:0} to{transform:translateX(0);opacity:1} }
+
+  /* ── IMPORT PANEL ── */
+  .drop-zone { border: 2px dashed var(--border2); border-radius: var(--radius); padding: 40px; text-align: center; cursor: pointer; transition: all 0.2s; }
+  .drop-zone:hover, .drop-zone.drag-over { border-color: var(--amber); background: var(--amber-dim); }
+  .drop-zone .dz-icon { font-size: 32px; margin-bottom: 12px; }
+  .drop-zone p { color: var(--muted); font-size: 13px; }
+  .drop-zone strong { color: var(--amber); }
+
+  /* ── AUDIT VIEW ── */
+  .audit-row { padding: 12px 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 140px 120px 1fr 1fr 100px; gap: 12px; align-items: center; font-size: 12px; }
+  .audit-row:last-child { border: none; }
+
+  /* ── EMPTY STATE ── */
+  .empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 300px; color: var(--muted); }
+  .empty-state .empty-icon { font-size: 40px; margin-bottom: 12px; }
+  .empty-state p { font-size: 14px; }
+
+  /* ── LOADING ── */
+  .loading-row td { text-align: center; color: var(--muted); padding: 40px; }
+  .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid var(--border2); border-top-color: var(--amber); border-radius: 50%; animation: spin 0.6s linear infinite; }
+  @keyframes spin { to{transform:rotate(360deg)} }
+
+  .selected-bar { background: var(--amber-dim); border: 1px solid rgba(245,158,11,0.25); border-radius: var(--radius); padding: 8px 14px; display: flex; align-items: center; gap: 12px; font-size: 13px; margin: 0 20px 0; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <div class="logo">Mining<span>Ops</span></div>
+      <div class="sync-status">
+        <div class="sync-dot" id="syncDot"></div>
+        <span id="syncText">Connected</span>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;">
+      <button class="btn btn-secondary" onclick="exportExcel()">⬇ Export Excel</button>
+      <button class="btn btn-primary" onclick="showAddModal()">+ Add Miner</button>
+    </div>
+  </div>
+
+  <div class="main">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-label">Views</div>
+        <button class="nav-item active" id="nav-inventory" onclick="switchView('inventory')">
+          <span class="nav-icon">📋</span> Inventory
+        </button>
+        <button class="nav-item" id="nav-import" onclick="switchView('import')">
+          <span class="nav-icon">⬆</span> Import
+        </button>
+        <button class="nav-item" id="nav-audit" onclick="switchView('audit')">
+          <span class="nav-icon">🕐</span> Audit Log
+        </button>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Stats</div>
+        <div class="stat-card green">
+          <div class="stat-val" id="stat-mining">—</div>
+          <div class="stat-lab">Mining</div>
+        </div>
+        <div class="stat-card amber">
+          <div class="stat-val" id="stat-warehouse">—</div>
+          <div class="stat-lab">Warehouse</div>
+        </div>
+        <div class="stat-card red">
+          <div class="stat-val" id="stat-faulty">—</div>
+          <div class="stat-lab">Faulty / Repair</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" id="stat-total">—</div>
+          <div class="stat-lab">Total Assets</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <!-- INVENTORY VIEW -->
+      <div id="view-inventory" style="display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;">
+        <div class="toolbar">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Search serial, model, location..." oninput="applyFilters()">
+          </div>
+          <select class="filter" id="filterStatus" onchange="applyFilters()">
+            <option value="">All Statuses</option>
+            <option value="mining">Mining</option>
+            <option value="warehouse">Warehouse</option>
+            <option value="repair">For Repair</option>
+            <option value="diagnosis">For Diagnosis</option>
+            <option value="ready">Ready For Deployment</option>
+          </select>
+          <select class="filter" id="filterModel" onchange="applyFilters()">
+            <option value="">All Models</option>
+          </select>
+          <select class="filter" id="filterContainer" onchange="applyFilters()">
+            <option value="">All Containers</option>
+          </select>
+          <button class="btn btn-secondary btn-sm" onclick="clearFilters()">✕ Clear</button>
+        </div>
+
+        <div id="selectedBar" class="selected-bar hidden">
+          <span id="selectedCount">0 selected</span>
+          <button class="btn btn-secondary btn-sm" onclick="exportSelected()">⬇ Export Selected</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteSelected()">🗑 Delete Selected</button>
+          <button class="btn btn-secondary btn-sm" onclick="clearSelection()">✕ Clear</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:40px;"><input type="checkbox" class="cb" id="selectAll" onchange="toggleSelectAll(this)"></th>
+                <th onclick="sortBy('serial')" id="th-serial">Serial <span id="sort-serial"></span></th>
+                <th onclick="sortBy('model')" id="th-model">Model <span id="sort-model"></span></th>
+                <th onclick="sortBy('location')" id="th-location">Location <span id="sort-location"></span></th>
+                <th onclick="sortBy('latest_status')" id="th-status">Status <span id="sort-latest_status"></span></th>
+                <th onclick="sortBy('hashrate')" id="th-hashrate">Hashrate <span id="sort-hashrate"></span></th>
+                <th onclick="sortBy('container')" id="th-container">Container <span id="sort-container"></span></th>
+                <th onclick="sortBy('updated_by')" id="th-updated">Updated By <span id="sort-updated_by"></span></th>
+                <th style="width:80px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              <tr class="loading-row"><td colspan="9"><div class="spinner"></div> Loading inventory...</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pagination">
+          <div class="page-info" id="pageInfo">—</div>
+          <div class="page-btns" id="pageBtns"></div>
+        </div>
+      </div>
+
+      <!-- IMPORT VIEW -->
+      <div id="view-import" class="hidden" style="padding:24px;overflow-y:auto;">
+        <h2 style="color:#fff;margin-bottom:8px;">Import Inventory</h2>
+        <p style="color:var(--muted);margin-bottom:24px;">Upload an Excel file (.xlsx) with columns: Asset Type, Serial, Model, Location, Latest Status, Hashrate, Container, Tank</p>
+        <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="dropFile(event)">
+          <div class="dz-icon">📂</div>
+          <p><strong>Click to upload</strong> or drag and drop</p>
+          <p style="margin-top:4px;font-size:12px;">Supports .xlsx files</p>
+        </div>
+        <input type="file" id="fileInput" accept=".xlsx" style="display:none" onchange="handleFileSelect(event)">
+        <div id="importPreview" class="hidden" style="margin-top:24px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+            <h3 style="color:#fff;" id="previewTitle">Preview</h3>
+            <div style="display:flex;gap:8px;">
+              <button class="btn btn-secondary" onclick="cancelImport()">Cancel</button>
+              <button class="btn btn-primary" onclick="confirmImport()" id="confirmImportBtn">Import All</button>
+            </div>
+          </div>
+          <div id="importStats" style="display:flex;gap:12px;margin-bottom:16px;"></div>
+          <div style="overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border);">
+            <table style="width:100%;">
+              <thead><tr id="previewHeaders" style="background:var(--surface2);"></tr></thead>
+              <tbody id="previewBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- AUDIT VIEW -->
+      <div id="view-audit" class="hidden" style="padding:24px;overflow-y:auto;">
+        <h2 style="color:#fff;margin-bottom:8px;">Audit Log</h2>
+        <p style="color:var(--muted);margin-bottom:24px;">Track every change made to inventory records.</p>
+        <div id="auditContent">
+          <div class="empty-state"><div class="empty-icon">🕐</div><p>Loading audit log...</p></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODALS -->
+<div class="modal-overlay hidden" id="editModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modalTitle">Edit Miner</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">Serial Number</label>
+        <input class="form-input" id="field-serial" placeholder="e.g. AME31LC000MKTEC2A26QA2404">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="form-group">
+          <label class="form-label">Asset Type</label>
+          <select class="form-input" id="field-asset_type">
+            <option>Asic Miner</option>
+            <option>PSU</option>
+            <option>Hashboard</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Model</label>
+          <input class="form-input" id="field-model" placeholder="e.g. AvalonMiner 1366IU-150">
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="form-group">
+          <label class="form-label">Location</label>
+          <input class="form-input" id="field-location" placeholder="e.g. Warehouse or 22.9.7">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Container</label>
+          <input class="form-input" id="field-container" placeholder="e.g. 22">
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="form-group">
+          <label class="form-label">Hashrate</label>
+          <input class="form-input" id="field-hashrate" type="number" placeholder="0">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tank</label>
+          <input class="form-input" id="field-tank" placeholder="e.g. Unknown">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Latest Status</label>
+        <textarea class="form-input" id="field-latest_status" placeholder="e.g. Mining / For Repair / Ready For Deployment"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Updated By</label>
+        <input class="form-input" id="field-updated_by" placeholder="Your name">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveRecord()" id="saveBtn">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- DELETE CONFIRM -->
+<div class="modal-overlay hidden" id="deleteModal">
+  <div class="modal" style="max-width:400px;">
+    <div class="modal-header">
+      <h3>Delete Miner</h3>
+      <button class="modal-close" onclick="document.getElementById('deleteModal').classList.add('hidden')">✕</button>
+    </div>
+    <div class="modal-body">
+      <p style="color:var(--muted);">Are you sure you want to delete <strong id="deleteSerial" style="color:#fff;font-family:var(--mono);"></strong>? This cannot be undone.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="document.getElementById('deleteModal').classList.add('hidden')">Cancel</button>
+      <button class="btn btn-danger" onclick="confirmDelete()">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+// ── CONFIG ──────────────────────────────────────────────────
+const SUPABASE_URL = 'https://agkaqrvsrptqusamihbw.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFna2FxcnZzcnB0cXVzYW1paGJ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExODAwMzYsImV4cCI6MjA5Njc1NjAzNn0._AFM4zhEfdOFUMr9qUKPCBFIh-eW1-IEdI-w62BZhTk';
+const HEADERS = {
+  'Content-Type': 'application/json',
+  'apikey': SUPABASE_KEY,
+  'Authorization': `Bearer ${SUPABASE_KEY}`,
+  'Prefer': 'return=representation'
+};
+
+// ── STATE ────────────────────────────────────────────────────
+let allData = [];
+let filtered = [];
+let selected = new Set();
+let currentPage = 1;
+let pageSize = 50;
+let sortCol = 'serial';
+let sortDir = 'asc';
+let editingId = null;
+let deleteId = null;
+let importData = [];
+
+// ── API ──────────────────────────────────────────────────────
+async function apiFetch(path, opts = {}) {
+  setSyncStatus('loading');
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+      ...opts,
+      headers: { ...HEADERS, ...(opts.headers || {}) }
+    });
+    if (!res.ok) {
+      const err = await res.text();
+      throw new Error(err);
+    }
+    setSyncStatus('ok');
+    if (res.status === 204) return null;
+    return res.json();
+  } catch (e) {
+    setSyncStatus('error');
+    toast(e.message || 'API error', 'error');
+    throw e;
+  }
+}
+
+function setSyncStatus(state) {
+  const dot = document.getElementById('syncDot');
+  const txt = document.getElementById('syncText');
+  dot.className = 'sync-dot' + (state === 'loading' ? ' loading' : state === 'error' ? ' error' : '');
+  txt.textContent = state === 'loading' ? 'Syncing...' : state === 'error' ? 'Connection error' : 'Connected';
+}
+
+// ── LOAD DATA ────────────────────────────────────────────────
+async function loadInventory() {
+  try {
+    const data = await apiFetch('inventory?select=*&order=serial.asc&limit=2000');
+    allData = data || [];
+    populateFilterOptions();
+    updateStats();
+    applyFilters();
+  } catch(e) {
+    document.getElementById('tableBody').innerHTML =
+      `<tr class="loading-row"><td colspan="9" style="color:var(--red);">Failed to load: ${e.message}</td></tr>`;
+  }
+}
+
+function populateFilterOptions() {
+  const models = [...new Set(allData.map(r => r.model).filter(Boolean))].sort();
+  const containers = [...new Set(allData.map(r => r.container).filter(Boolean))].sort();
+  const mSel = document.getElementById('filterModel');
+  const cSel = document.getElementById('filterContainer');
+  mSel.innerHTML = '<option value="">All Models</option>' + models.map(m => `<option value="${m}">${m}</option>`).join('');
+  cSel.innerHTML = '<option value="">All Containers</option>' + containers.map(c => `<option value="${c}">Container ${c}</option>`).join('');
+}
+
+function updateStats() {
+  const mining = allData.filter(r => r.latest_status?.toLowerCase().includes('mining')).length;
+  const warehouse = allData.filter(r => r.location?.toLowerCase() === 'warehouse').length;
+  const faulty = allData.filter(r => {
+    const s = (r.latest_status || '').toLowerCase();
+    return s.includes('repair') || s.includes('diagnosis') || s.includes('faulty');
+  }).length;
+  document.getElementById('stat-mining').textContent = mining;
+  document.getElementById('stat-warehouse').textContent = warehouse;
+  document.getElementById('stat-faulty').textContent = faulty;
+  document.getElementById('stat-total').textContent = allData.length;
+}
+
+// ── FILTERS ──────────────────────────────────────────────────
+function applyFilters() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  const status = document.getElementById('filterStatus').value.toLowerCase();
+  const model = document.getElementById('filterModel').value;
+  const container = document.getElementById('filterContainer').value;
+
+  filtered = allData.filter(r => {
+    const s = (r.latest_status || '').toLowerCase();
+    if (q && ![r.serial, r.model, r.location, r.latest_status, r.updated_by]
+      .filter(Boolean).some(v => v.toLowerCase().includes(q))) return false;
+    if (status) {
+      if (status === 'mining' && !s.includes('mining')) return false;
+      if (status === 'warehouse' && r.location?.toLowerCase() !== 'warehouse') return false;
+      if (status === 'repair' && !s.includes('repair')) return false;
+      if (status === 'diagnosis' && !s.includes('diagnosis')) return false;
+      if (status === 'ready' && !s.includes('ready')) return false;
+    }
+    if (model && r.model !== model) return false;
+    if (container && r.container !== container) return false;
+    return true;
+  });
+
+  // Sort
+  filtered.sort((a, b) => {
+    let av = a[sortCol] ?? '', bv = b[sortCol] ?? '';
+    if (sortCol === 'hashrate') { av = parseFloat(av)||0; bv = parseFloat(bv)||0; }
+    else { av = String(av).toLowerCase(); bv = String(bv).toLowerCase(); }
+    return sortDir === 'asc' ? (av > bv ? 1 : -1) : (av < bv ? 1 : -1);
+  });
+
+  currentPage = 1;
+  renderTable();
+}
+
+function clearFilters() {
+  document.getElementById('searchInput').value = '';
+  document.getElementById('filterStatus').value = '';
+  document.getElementById('filterModel').value = '';
+  document.getElementById('filterContainer').value = '';
+  applyFilters();
+}
+
+// ── SORT ─────────────────────────────────────────────────────
+function sortBy(col) {
+  if (sortCol === col) sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+  else { sortCol = col; sortDir = 'asc'; }
+  document.querySelectorAll('[id^="sort-"]').forEach(el => el.textContent = '');
+  document.getElementById(`sort-${col}`).textContent = sortDir === 'asc' ? ' ↑' : ' ↓';
+  applyFilters();
+}
+
+// ── RENDER ───────────────────────────────────────────────────
+function getStatusBadge(status) {
+  if (!status) return '<span class="badge badge-default">Unknown</span>';
+  const s = status.toLowerCase();
+  const short = status.split('\n')[0].substring(0, 40);
+  if (s.includes('mining')) return `<span class="badge badge-mining">⚡ ${short}</span>`;
+  if (s.includes('ready')) return `<span class="badge badge-ready">✓ ${short}</span>`;
+  if (s.includes('repair')) return `<span class="badge badge-repair">🔧 ${short}</span>`;
+  if (s.includes('diagnosis') || s.includes('faulty')) return `<span class="badge badge-faulty">⚠ ${short}</span>`;
+  if (s.includes('warehouse')) return `<span class="badge badge-warehouse">📦 ${short}</span>`;
+  return `<span class="badge badge-default">${short}</span>`;
+}
+
+function renderTable() {
+  const start = (currentPage - 1) * pageSize;
+  const page = filtered.slice(start, start + pageSize);
+  const tbody = document.getElementById('tableBody');
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="9"><div class="empty-state"><div class="empty-icon">🔍</div><p>No miners match your filters</p></div></td></tr>`;
+    renderPagination();
+    return;
+  }
+
+  tbody.innerHTML = page.map(r => `
+    <tr class="${selected.has(r.id) ? 'selected' : ''}" data-id="${r.id}">
+      <td><input type="checkbox" class="cb" ${selected.has(r.id)?'checked':''} onchange="toggleSelect('${r.id}', this)"></td>
+      <td class="serial-cell">${r.serial || '—'}</td>
+      <td>${r.model || '—'}</td>
+      <td class="loc-cell">${r.location || '—'}</td>
+      <td>${getStatusBadge(r.latest_status)}</td>
+      <td class="hash-cell">${r.hashrate != null ? r.hashrate + ' T' : '—'}</td>
+      <td>${r.container || '—'}</td>
+      <td>${r.updated_by || '—'}</td>
+      <td>
+        <button class="btn btn-secondary btn-sm" onclick="editRecord('${r.id}')" title="Edit">✏</button>
+        <button class="btn btn-danger btn-sm" onclick="promptDelete('${r.id}', '${r.serial}')" title="Delete">🗑</button>
+      </td>
+    </tr>
+  `).join('');
+
+  renderPagination();
+  updateSelectedBar();
+}
+
+function renderPagination() {
+  const total = filtered.length;
+  const pages = Math.ceil(total / pageSize);
+  const start = (currentPage - 1) * pageSize + 1;
+  const end = Math.min(currentPage * pageSize, total);
+  document.getElementById('pageInfo').textContent = total ? `${start}–${end} of ${total} miners` : '0 miners';
+
+  const btns = document.getElementById('pageBtns');
+  let html = `<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>‹</button>`;
+  for (let p = Math.max(1, currentPage-2); p <= Math.min(pages, currentPage+2); p++) {
+    html += `<button class="page-btn ${p===currentPage?'active':''}" onclick="goPage(${p})">${p}</button>`;
+  }
+  html += `<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===pages?'disabled':''}>›</button>`;
+  btns.innerHTML = html;
+}
+
+function goPage(p) {
+  const pages = Math.ceil(filtered.length / pageSize);
+  if (p < 1 || p > pages) return;
+  currentPage = p;
+  renderTable();
+}
+
+// ── SELECTION ────────────────────────────────────────────────
+function toggleSelect(id, cb) {
+  if (cb.checked) selected.add(id);
+  else selected.delete(id);
+  updateSelectedBar();
+  renderTable();
+}
+
+function toggleSelectAll(cb) {
+  const page = filtered.slice((currentPage-1)*pageSize, currentPage*pageSize);
+  page.forEach(r => cb.checked ? selected.add(r.id) : selected.delete(r.id));
+  updateSelectedBar();
+  renderTable();
+}
+
+function clearSelection() { selected.clear(); updateSelectedBar(); renderTable(); }
+
+function updateSelectedBar() {
+  const bar = document.getElementById('selectedBar');
+  if (selected.size > 0) {
+    bar.classList.remove('hidden');
+    document.getElementById('selectedCount').textContent = `${selected.size} selected`;
+  } else {
+    bar.classList.add('hidden');
+  }
+}
+
+// ── EDIT / ADD ───────────────────────────────────────────────
+function showAddModal() {
+  editingId = null;
+  document.getElementById('modalTitle').textContent = 'Add Miner';
+  document.getElementById('saveBtn').textContent = 'Add Miner';
+  document.getElementById('field-serial').disabled = false;
+  ['serial','asset_type','model','location','container','hashrate','tank','latest_status','updated_by'].forEach(f => {
+    const el = document.getElementById('field-' + f);
+    if (el) el.value = '';
+  });
+  document.getElementById('editModal').classList.remove('hidden');
+}
+
+function editRecord(id) {
+  const r = allData.find(x => x.id === id);
+  if (!r) return;
+  editingId = id;
+  document.getElementById('modalTitle').textContent = 'Edit Miner';
+  document.getElementById('saveBtn').textContent = 'Save Changes';
+  document.getElementById('field-serial').value = r.serial || '';
+  document.getElementById('field-serial').disabled = true;
+  document.getElementById('field-asset_type').value = r.asset_type || 'Asic Miner';
+  document.getElementById('field-model').value = r.model || '';
+  document.getElementById('field-location').value = r.location || '';
+  document.getElementById('field-container').value = r.container || '';
+  document.getElementById('field-hashrate').value = r.hashrate || '';
+  document.getElementById('field-tank').value = r.tank || '';
+  document.getElementById('field-latest_status').value = r.latest_status || '';
+  document.getElementById('field-updated_by').value = r.updated_by || '';
+  document.getElementById('editModal').classList.remove('hidden');
+}
+
+async function saveRecord() {
+  const payload = {
+    asset_type:    document.getElementById('field-asset_type').value,
+    serial:        document.getElementById('field-serial').value.trim(),
+    model:         document.getElementById('field-model').value.trim(),
+    location:      document.getElementById('field-location').value.trim(),
+    container:     document.getElementById('field-container').value.trim(),
+    hashrate:      parseFloat(document.getElementById('field-hashrate').value) || 0,
+    tank:          document.getElementById('field-tank').value.trim(),
+    latest_status: document.getElementById('field-latest_status').value.trim(),
+    updated_by:    document.getElementById('field-updated_by').value.trim(),
+    last_updated:  new Date().toISOString(),
+  };
+
+  if (!payload.serial) { toast('Serial number is required', 'error'); return; }
+
+  try {
+    if (editingId) {
+      await apiFetch(`inventory?id=eq.${editingId}`, {
+        method: 'PATCH',
+        body: JSON.stringify(payload)
+      });
+      toast('Miner updated', 'success');
+    } else {
+      await apiFetch('inventory', {
+        method: 'POST',
+        body: JSON.stringify(payload)
+      });
+      toast('Miner added', 'success');
+    }
+    closeModal();
+    loadInventory();
+  } catch(e) {}
+}
+
+function closeModal() {
+  document.getElementById('editModal').classList.add('hidden');
+  editingId = null;
+}
+
+// ── DELETE ───────────────────────────────────────────────────
+function promptDelete(id, serial) {
+  deleteId = id;
+  document.getElementById('deleteSerial').textContent = serial;
+  document.getElementById('deleteModal').classList.remove('hidden');
+}
+
+async function confirmDelete() {
+  if (!deleteId) return;
+  try {
+    await apiFetch(`inventory?id=eq.${deleteId}`, { method: 'DELETE' });
+    toast('Miner deleted', 'success');
+    document.getElementById('deleteModal').classList.add('hidden');
+    deleteId = null;
+    loadInventory();
+  } catch(e) {}
+}
+
+async function deleteSelected() {
+  if (!selected.size) return;
+  if (!confirm(`Delete ${selected.size} miners? This cannot be undone.`)) return;
+  try {
+    const ids = [...selected].map(id => `"${id}"`).join(',');
+    await apiFetch(`inventory?id=in.(${ids})`, { method: 'DELETE' });
+    toast(`${selected.size} miners deleted`, 'success');
+    selected.clear();
+    loadInventory();
+  } catch(e) {}
+}
+
+// ── EXPORT ───────────────────────────────────────────────────
+function exportExcel() {
+  const data = filtered.length > 0 ? filtered : allData;
+  const rows = data.map(r => ({
+    'Asset Type':    r.asset_type,
+    'Serial':        r.serial,
+    'Model':         r.model,
+    'Location':      r.location,
+    'Latest Status': r.latest_status,
+    'Hashrate':      r.hashrate,
+    'Container':     r.container,
+    'Tank':          r.tank,
+    'Last Updated':  r.last_updated,
+    'Updated By':    r.updated_by,
+  }));
+  const ws = XLSX.utils.json_to_sheet(rows);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Inventory');
+  XLSX.writeFile(wb, `inventory_export_${new Date().toISOString().slice(0,10)}.xlsx`);
+  toast(`Exported ${rows.length} miners`, 'success');
+}
+
+function exportSelected() {
+  const data = allData.filter(r => selected.has(r.id));
+  const rows = data.map(r => ({
+    'Asset Type':    r.asset_type,
+    'Serial':        r.serial,
+    'Model':         r.model,
+    'Location':      r.location,
+    'Latest Status': r.latest_status,
+    'Hashrate':      r.hashrate,
+    'Container':     r.container,
+    'Tank':          r.tank,
+    'Last Updated':  r.last_updated,
+    'Updated By':    r.updated_by,
+  }));
+  const ws = XLSX.utils.json_to_sheet(rows);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Selected');
+  XLSX.writeFile(wb, `inventory_selected_${new Date().toISOString().slice(0,10)}.xlsx`);
+  toast(`Exported ${rows.length} miners`, 'success');
+}
+
+// ── IMPORT ───────────────────────────────────────────────────
+function dragOver(e) { e.preventDefault(); document.getElementById('dropZone').classList.add('drag-over'); }
+function dragLeave() { document.getElementById('dropZone').classList.remove('drag-over'); }
+function dropFile(e) { e.preventDefault(); dragLeave(); handleFile(e.dataTransfer.files[0]); }
+function handleFileSelect(e) { handleFile(e.target.files[0]); }
+
+function handleFile(file) {
+  if (!file || !file.name.endsWith('.xlsx')) { toast('Please upload an .xlsx file', 'error'); return; }
+  const reader = new FileReader();
+  reader.onload = e => {
+    const wb = XLSX.read(e.target.result, { type: 'array' });
+    const ws = wb.Sheets[wb.SheetNames[0]];
+    const rows = XLSX.utils.sheet_to_json(ws, { defval: '' });
+    importData = rows;
+    showImportPreview(file.name, rows);
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+function showImportPreview(filename, rows) {
+  document.getElementById('importPreview').classList.remove('hidden');
+  document.getElementById('previewTitle').textContent = `Preview: ${filename} (${rows.length} rows)`;
+
+  const valid = rows.filter(r => r['Serial'] && String(r['Serial']).trim().length >= 5).length;
+  const invalid = rows.length - valid;
+  document.getElementById('importStats').innerHTML = `
+    <div class="stat-card green" style="flex:1;"><div class="stat-val">${valid}</div><div class="stat-lab">Valid rows</div></div>
+    <div class="stat-card ${invalid>0?'red':'green'}" style="flex:1;"><div class="stat-val">${invalid}</div><div class="stat-lab">Invalid rows</div></div>
+  `;
+
+  const cols = Object.keys(rows[0] || {});
+  document.getElementById('previewHeaders').innerHTML = cols.map(c => `<th style="padding:8px 12px;font-size:11px;text-transform:uppercase;color:var(--muted);">${c}</th>`).join('');
+  document.getElementById('previewBody').innerHTML = rows.slice(0, 10).map(r =>
+    `<tr>${cols.map(c => `<td style="padding:8px 12px;border-top:1px solid var(--border);font-size:12px;">${r[c] || ''}</td>`).join('')}</tr>`
+  ).join('');
+}
+
+async function confirmImport() {
+  if (!importData.length) return;
+  const btn = document.getElementById('confirmImportBtn');
+  btn.textContent = 'Importing...';
+  btn.disabled = true;
+
+  let inserted = 0, updated = 0, errors = 0;
+
+  for (const row of importData) {
+    const serial = String(row['Serial'] || '').trim();
+    if (!serial || serial.length < 5) { errors++; continue; }
+
+    const payload = {
+      asset_type:    row['Asset Type'] || 'Asic Miner',
+      serial:        serial,
+      model:         row['Model'] || null,
+      location:      row['Location'] || null,
+      latest_status: row['Latest Status'] || null,
+      hashrate:      parseFloat(row['Hashrate']) || 0,
+      container:     String(row['Container'] || ''),
+      tank:          String(row['Tank'] || ''),
+      last_updated:  new Date().toISOString(),
+      updated_by:    row['Updated By'] || null,
+    };
+
+    try {
+      const existing = await apiFetch(`inventory?serial=eq.${encodeURIComponent(serial)}&select=id`);
+      if (existing && existing.length > 0) {
+        await apiFetch(`inventory?serial=eq.${encodeURIComponent(serial)}`, {
+          method: 'PATCH', body: JSON.stringify(payload)
+        });
+        updated++;
+      } else {
+        await apiFetch('inventory', { method: 'POST', body: JSON.stringify(payload) });
+        inserted++;
+      }
+    } catch(e) { errors++; }
+  }
+
+  toast(`Import complete: ${inserted} added, ${updated} updated, ${errors} errors`, 'success');
+  btn.textContent = 'Import All';
+  btn.disabled = false;
+  cancelImport();
+  loadInventory();
+  switchView('inventory');
+}
+
+function cancelImport() {
+  importData = [];
+  document.getElementById('importPreview').classList.add('hidden');
+  document.getElementById('fileInput').value = '';
+}
+
+// ── AUDIT LOG ────────────────────────────────────────────────
+async function loadAuditLog() {
+  try {
+    const data = await apiFetch('audit_log?select=*&order=changed_at.desc&limit=200');
+    const el = document.getElementById('auditContent');
+    if (!data || !data.length) {
+      el.innerHTML = '<div class="empty-state"><div class="empty-icon">🕐</div><p>No changes recorded yet</p></div>';
+      return;
+    }
+    el.innerHTML = `
+      <div style="background:var(--surface2);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;">
+        <div class="audit-row" style="background:var(--surface3);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--muted);">
+          <span>Time</span><span>Serial</span><span>Field</span><span>Change</span><span>Source</span>
+        </div>
+        ${data.map(r => `
+          <div class="audit-row">
+            <span style="color:var(--muted);">${new Date(r.changed_at).toLocaleString()}</span>
+            <span style="font-family:var(--mono);color:var(--amber);font-size:11px;">${r.serial || '—'}</span>
+            <span style="color:var(--blue);">${r.field || '—'}</span>
+            <span><span style="color:var(--red);">${r.old_value || '—'}</span> → <span style="color:var(--green);">${r.new_value || '—'}</span></span>
+            <span style="color:var(--muted);font-size:11px;">${r.source || '—'}</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  } catch(e) {}
+}
+
+// ── VIEWS ────────────────────────────────────────────────────
+function switchView(view) {
+  ['inventory','import','audit'].forEach(v => {
+    document.getElementById(`view-${v}`).classList.toggle('hidden', v !== view);
+    document.getElementById(`nav-${v}`).classList.toggle('active', v === view);
+  });
+  if (view === 'audit') loadAuditLog();
+}
+
+// ── TOAST ────────────────────────────────────────────────────
+function toast(msg, type = 'info') {
+  const el = document.createElement('div');
+  el.className = `toast ${type}`;
+  el.innerHTML = `<span>${type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️'}</span><span>${msg}</span>`;
+  document.getElementById('toastContainer').appendChild(el);
+  setTimeout(() => el.remove(), 4000);
+}
+
+// ── INIT ─────────────────────────────────────────────────────
+loadInventory();
+</script>
+</body>
+</html>
