@@ -1,0 +1,59 @@
+name: Nightly Supabase Backup
+
+on:
+  schedule:
+    - cron: '0 3 * * *'   # 3 AM UTC daily
+  workflow_dispatch: {}     # lets you trigger it manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Run export script
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          chmod +x ./backup-export.sh
+          ./backup-export.sh
+
+      - name: Prune backups older than 60 days
+        run: |
+          find backups -maxdepth 1 -type d -mtime +60 -exec rm -rf {} \; || true
+
+      - name: Commit and push
+        run: |
+          git config user.name "backup-bot"
+          git config user.email "backup-bot@users.noreply.github.com"
+          git add backups
+          git diff --cached --quiet && echo "No changes to commit" || git commit -m "Nightly backup $(date -u +%Y-%m-%d)"
+          git push
+
+      - name: Zip tonight's export
+        run: |
+          DATE_STR=$(date -u +%Y-%m-%d)
+          zip -j "backup_${DATE_STR}.zip" backups/${DATE_STR}/*.json
+          echo "ZIP_PATH=backup_${DATE_STR}.zip" >> $GITHUB_ENV
+          echo "DATE_STR=${DATE_STR}" >> $GITHUB_ENV
+
+      - name: Email the backup
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "Supabase Backup - ${{ env.DATE_STR }}"
+          to: ${{ secrets.MAIL_TO }}
+          from: Nightly Backup Bot
+          body: "Attached is tonight's Supabase export (${{ env.DATE_STR }}). It's also committed to this repo under backups/${{ env.DATE_STR }}/."
+          attachments: ${{ env.ZIP_PATH }}
