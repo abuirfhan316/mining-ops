@@ -74,14 +74,19 @@ for TABLE in "${TABLES[@]}"; do
       exit 1
     fi
 
-    if head -c 20 "$TMP_FILE" | grep -qE '^\s*(<|{)'; then
+    FIRST_CHAR=$(head -c 1 "$TMP_FILE" | tr -d '[:space:]')
+    if [[ "$FIRST_CHAR" == "<" || "$FIRST_CHAR" == "{" ]]; then
       echo "ERROR: response for $TABLE (page $PAGE_NUM) doesn't look like CSV (looks like HTML/JSON). Check table name / RLS policy." >&2
       cat "$TMP_FILE" >&2
       rm -f "$TMP_FILE"
       exit 1
     fi
 
-    PAGE_ROWS=$(($(wc -l < "$TMP_FILE") - 1))   # subtract header row
+    # Use awk's NR instead of `wc -l` to count lines: wc -l only counts
+    # newline characters, so a final line with no trailing newline (common
+    # in curl responses) gets silently dropped and undercounts by 1 -- which
+    # was causing pagination to stop one page too early.
+    PAGE_ROWS=$(($(awk 'END{print NR}' "$TMP_FILE") - 1))   # subtract header row
     if [[ "$PAGE_ROWS" -lt 0 ]]; then
       PAGE_ROWS=0
     fi
