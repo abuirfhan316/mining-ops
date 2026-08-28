@@ -6,6 +6,7 @@
 <title>Mining Ops — Inventory</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Ccircle%20cx='32'%20cy='32'%20r='30'%20fill='%23f59e0b'%20stroke='%23b45309'%20stroke-width='3'/%3E%3Crect%20x='22'%20y='12'%20width='5'%20height='40'%20rx='2.5'%20fill='%23fff'/%3E%3Crect%20x='37'%20y='12'%20width='5'%20height='40'%20rx='2.5'%20fill='%23fff'/%3E%3Crect%20x='22'%20y='14'%20width='20'%20height='5'%20rx='2.5'%20fill='%23fff'/%3E%3Crect%20x='22'%20y='24'%20width='20'%20height='5'%20rx='2.5'%20fill='%23fff'/%3E%3Crect%20x='22'%20y='36'%20width='20'%20height='5'%20rx='2.5'%20fill='%23fff'/%3E%3Crect%20x='22'%20y='45'%20width='20'%20height='5'%20rx='2.5'%20fill='%23fff'/%3E%3Ccircle%20cx='26'%20cy='55'%20r='2'%20fill='%237c2d12'/%3E%3Ccircle%20cx='38'%20cy='55'%20r='2'%20fill='%237c2d12'/%3E%3Cpath%20d='M28%2058%20Q32%2061%2036%2058'%20stroke='%237c2d12'%20stroke-width='2'%20fill='none'%20stroke-linecap='round'/%3E%3C/svg%3E">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
   :root {
     --bg: #0a0c10;
@@ -204,6 +205,17 @@
   .loading-row td { text-align: center; color: var(--muted); padding: 40px; }
   .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid var(--border2); border-top-color: var(--amber); border-radius: 50%; animation: spin 0.6s linear infinite; }
   @keyframes spin { to{transform:rotate(360deg)} }
+  body.light { --bg:#f4f6f8; --surface:#fff; --surface2:#eef1f5; --surface3:#e2e7ee; --border:rgba(15,23,42,.1); --border2:rgba(15,23,42,.18); --text:#172033; --muted:#64748b; --amber-dim:rgba(245,158,11,.14); --green-dim:rgba(16,185,129,.12); --red-dim:rgba(239,68,68,.12); --blue-dim:rgba(59,130,246,.12); }
+  body.light .logo, body.light h2, body.light h3, body.light h4, body.light .modal-header h3, body.light .stat-card .stat-val, body.light .serial-cell { color:#172033 !important; }
+  body.light [style*="color:#fff"], body.light [style*="color: #fff"], body.light [style*="color:white"] { color:#172033 !important; }
+  body.light .psu-bd-card:not(.green):not(.amber):not(.red) .psu-bd-val { color:#172033 !important; }
+  body.light .badge-mining { background:#dcfce7; color:#166534; border-color:#86efac; }
+  body.light .badge-warehouse { background:#dbeafe; color:#1e40af; border-color:#93c5fd; }
+  body.light .badge-faulty { background:#fee2e2; color:#b91c1c; border-color:#fca5a5; }
+  body.light .badge-repair { background:#fef3c7; color:#92400e; border-color:#fcd34d; }
+  body.light .badge-ready { background:#ede9fe; color:#6d28d9; border-color:#c4b5fd; }
+  body.light th, body.light td, body.light label, body.light strong { color:var(--text); }
+  body.light tbody tr:hover { background:rgba(15,23,42,.04); }
 
   .selected-bar { background: var(--amber-dim); border: 1px solid rgba(245,158,11,0.25); border-radius: var(--radius); padding: 8px 14px; display: flex; align-items: center; gap: 12px; font-size: 13px; margin: 0 20px 0; }
   .hidden { display: none !important; }
@@ -276,6 +288,7 @@
         <span class="role-badge" id="topbarRole">—</span>
       </div>
       <button class="btn btn-secondary" onclick="openPasswordModal()" title="Change password">🔑</button>
+      <button class="btn btn-secondary" id="themeToggle" onclick="toggleTheme()" title="Switch theme">☀ Light</button>
       <button class="btn btn-secondary" onclick="logout()">Sign Out</button>
     </div>
   </div>
@@ -291,9 +304,12 @@
         <button class="nav-item" id="nav-miner" onclick="switchView('miner')">
           <span class="nav-icon">⛏</span> madZ Breakdown
         </button>
-        <button class="nav-item" id="nav-monitor" onclick="switchView('monitor')">
-          <span class="nav-icon">🖥</span> Miner Monitoring
-        </button>
+       <button class="nav-item" id="nav-monitor" onclick="switchView('monitor')">
+           <span class="nav-icon">🖥</span> Miner Monitoring
+         </button>
+         <button class="nav-item" id="nav-hosting" onclick="switchView('hosting')">
+           <span class="nav-icon">🏠</span> Antsentry Report
+         </button>
         <button class="nav-item" id="nav-psu" onclick="switchView('psu')">
           <span class="nav-icon">⚡</span> XP-PSU Inventory
         </button>
@@ -558,7 +574,8 @@
           <h2 style="color:#fff;">madZ Breakdown</h2>
           <div style="display:flex;gap:8px;">
             <button class="btn btn-secondary" onclick="fitTable(document.querySelector('#minerContent table'))">⇔ Fit Columns</button>
-            <button class="btn btn-secondary" onclick="exportMinerBreakdown()">⬇ Export Breakdown</button>
+             <button class="btn btn-secondary" onclick="exportMinerBreakdown()">⬇ Excel</button>
+             <button class="btn btn-primary" onclick="exportMinerBreakdownPdf()">⬇ PDF Report</button>
           </div>
         </div>
         <p style="color:var(--muted);margin-bottom:16px;">Inventory stats per miner model.</p>
@@ -572,7 +589,8 @@
           <h2 style="color:#fff;">Mirfa Breakdown</h2>
           <div style="display:flex;gap:8px;">
             <button class="btn btn-secondary" onclick="fitTable(document.querySelector('#mirfabdContent table'))">⇔ Fit Columns</button>
-            <button class="btn btn-secondary" onclick="exportMirfaBreakdown()">⬇ Export Breakdown</button>
+             <button class="btn btn-secondary" onclick="exportMirfaBreakdown()">⬇ Excel</button>
+             <button class="btn btn-primary" onclick="exportMirfaBreakdownPdf()">⬇ PDF Report</button>
           </div>
         </div>
         <p style="color:var(--muted);margin-bottom:16px;">Mirfa site stats per miner model — separate dataset, never mixed with the main fleet.</p>
@@ -584,7 +602,7 @@
       <div id="view-masterbd" class="hidden" style="padding:24px;overflow-y:auto;">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;flex-wrap:wrap;">
           <h2 style="color:#fff;">Master Breakdown</h2>
-          <button class="btn btn-secondary" onclick="renderMasterBreakdown()">↻ Refresh</button>
+           <div style="display:flex;gap:8px;"><button class="btn btn-secondary" onclick="renderMasterBreakdown()">↻ Refresh</button><button class="btn btn-primary" onclick="exportMasterBreakdownPdf()">⬇ PDF Report</button></div>
         </div>
         <p style="color:var(--muted);margin-bottom:16px;">Read-only snapshot pulled from each inventory — madZ (miners + PSUs) and Mirfa (miners only).</p>
         <div id="masterbdContent"></div>
@@ -728,6 +746,16 @@
           <span><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:rgba(255,255,255,0.03);border:1px solid var(--border);margin-right:6px;vertical-align:-2px;"></span>No miner</span>
         </div>
         <div id="monitorGrid"></div>
+      </div>
+
+      <!-- HOSTING REPORT VIEW -->
+      <div id="view-hosting" class="hidden" style="padding:24px;overflow-y:auto;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;flex-wrap:wrap;">
+          <div><h2 style="color:#fff;margin-bottom:4px;">Antsentry Report</h2><p style="color:var(--muted);font-size:12px;">Bitmain Hydro fleet · live hosting versus maintenance capacity</p></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;"><button class="btn btn-secondary" onclick="refreshHostingReport()">↻ Refresh</button><button class="btn btn-primary" onclick="exportHostingReport()">⬇ Export Report</button></div>
+        </div>
+        <div id="hostingStats" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:18px 0;"></div>
+        <div id="hostingContent"></div>
       </div>
 
       <!-- POOL MONITOR VIEW -->
@@ -1190,6 +1218,8 @@ function workerToIP(name) {
 
 // ── STATE ────────────────────────────────────────────────────
 let allData = [];
+let hydroFleet = [];
+let hydroFleetLoadError = '';
 let filtered = [];
 let groupCol = null;
 let thTimer = null;
@@ -1548,6 +1578,18 @@ async function loadInventory() {
       if (chunk.length < SIZE) break;
     }
     allData = all;
+    try {
+      hydroFleetLoadError = '';
+      hydroFleet = [];
+      let hydroOffset = 0;
+      const HYDRO_SIZE = 1000;
+      for (;;) {
+        const hydroChunk = await apiFetch(`hydro_fleet?select=*&order=ip_address.asc&limit=${HYDRO_SIZE}&offset=${hydroOffset}`) || [];
+        hydroFleet.push(...hydroChunk);
+        hydroOffset += HYDRO_SIZE;
+        if (hydroChunk.length < HYDRO_SIZE) break;
+      }
+    } catch (e) { hydroFleetLoadError = e.message || 'Unable to load Hydro fleet'; }
     populateFilterOptions();
     updateStats();
     applyFilters();
@@ -1911,12 +1953,6 @@ const MIRFA_BREAKDOWN = {
     'AvalonMiner 1466I-179T',
     'AvalonMiner 1566I-243T',
     'AvalonMiner 1566I-246T'
-  ],
-  'Bitmain Hydro': [
-    'Antminer S-21 Hydro 302T',
-    'Antminer S-21 Hydro 319T',
-    'Antminer S-21 Hydro 335T',
-    'Antminer S-21e Hydro 310T'
   ]
 };
 
@@ -2094,8 +2130,100 @@ function exportMinerBreakdown() {
   toast(`Exported ${rows.length} rows`, 'success');
 }
 
+// ── HOSTING REPORT ────────────────────────────────────────────
+const HOSTING_FLEET = [
+  { model: 'Antminer S-21 Hydro 302T', total: 74 },
+  { model: 'Antminer S-21 Hydro 319T', total: 993 },
+  { model: 'Antminer S-21 Hydro 335T', total: 53 }
+];
+
+function fullInventoryIp(value) {
+  const raw = String(value || '').trim();
+  if (!raw) return '';
+  const parts = raw.split('.');
+  if (parts.length === 3 && parts.every(p => /^\d{1,3}$/.test(p) && Number(p) <= 255)) return `10.${raw}`;
+  if (parts.length === 4 && parts[0] === '10' && parts.slice(1).every(p => /^\d{1,3}$/.test(p) && Number(p) <= 255)) return raw;
+  return '';
+}
+
+function hostingRows() {
+  return allData.filter(r => !isMirfa(r) && HOSTING_FLEET.some(f => modelMatches(r.model, f.model)));
+}
+
+function hostingIsOnline(row) {
+  const status = String(row.latest_status || '').toLowerCase();
+  return (status.includes('mining') || status.includes('hashing')) && !status.includes('not hashing');
+}
+
+function renderHostingReport() {
+  const statsEl = document.getElementById('hostingStats');
+  const contentEl = document.getElementById('hostingContent');
+  if (!statsEl || !contentEl) return;
+  const inventory = hostingRows();
+  const inventoryHashingCount = inventory.filter(hostingIsOnline).length;
+  const rows = HOSTING_FLEET.map(f => {
+    const fleetRows = inventory.filter(r => modelMatches(r.model, f.model));
+    const hosting = fleetRows.filter(hostingIsOnline).length;
+    return { ...f, inventory: fleetRows.length, hosting, maintenance: Math.max(0, f.total - hosting), slots: fleetRows.filter(r => !hostingIsOnline(r)) };
+  });
+  const offlineHydros = inventory.filter(r => !hostingIsOnline(r));
+  const inventoryHashingIps = new Set(inventory.filter(hostingIsOnline).map(r => fullInventoryIp(r.location)).filter(Boolean));
+  const masterIps = hydroFleet.map(r => String(r.ip_address || '').trim()).filter(Boolean);
+  // The master list is the complete madZ Hydro fleet. Mirfa is already
+  // excluded from `inventory` by hostingRows(), so never remove master IPs
+  // based on Mirfa records.
+  const madzMasterIps = masterIps;
+  const missingIps = madzMasterIps.filter(ip => !inventoryHashingIps.has(ip));
+  // The hashing total comes from inventory status. IP matching is only used
+  // to identify slots, because some hashing rows have a warehouse location.
+  const totalHosting = masterIps.length ? madzMasterIps.filter(ip => inventoryHashingIps.has(ip)).length : inventoryHashingCount;
+  const totalMaintenance = masterIps.length ? missingIps.length : Math.max(0, 1120 - totalHosting);
+  const esc = value => escapeHtml(value);
+  statsEl.innerHTML = `
+    <div class="stat-card"><div class="stat-val">1,120</div><div class="stat-lab">Total Hydro Capacity</div></div>
+    <div class="stat-card green"><div class="stat-val">${totalHosting.toLocaleString()}</div><div class="stat-lab">Hosting / Hashing</div></div>
+    <button class="stat-card red clickable" onclick="showHostingSlots()" style="text-align:left;border:1px solid var(--border);"><div class="stat-val">${totalMaintenance.toLocaleString()}</div><div class="stat-lab">Offline / Empty Slots ›</div></button>`;
+  const dataWarning = hydroFleetLoadError || masterIps.length !== 1120 || inventoryHashingIps.size !== inventoryHashingCount
+    ? `<div class="msg msg-err" style="text-align:left;margin-bottom:12px;">Hydro IP comparison needs attention: master IPs ${masterIps.length}/1,120 · hashing inventory IPs ${inventoryHashingIps.size}/${inventoryHashingCount}. Warehouse locations are excluded.</div>` : '';
+  contentEl.innerHTML = `${dataWarning}<div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);overflow:auto;margin-bottom:14px;"><table><thead><tr><th>Hydro Model</th><th style="text-align:right;">Capacity</th><th style="text-align:right;">Hosting</th><th style="text-align:right;">Maintenance</th></tr></thead><tbody>${rows.map(r => `<tr><td style="font-weight:600;">${esc(r.model)}</td><td style="text-align:right;font-family:var(--mono);">${r.total}</td><td style="text-align:right;font-family:var(--mono);color:var(--green);font-weight:700;">${r.hosting}</td><td style="text-align:right;font-family:var(--mono);color:var(--red);font-weight:700;">${r.maintenance}</td></tr>`).join('')}<tr style="background:var(--green-dim);font-weight:800;"><td>Total Hydro Fleet</td><td style="text-align:right;font-family:var(--mono);">1,120</td><td style="text-align:right;font-family:var(--mono);color:var(--green);">${totalHosting}</td><td style="text-align:right;font-family:var(--mono);color:var(--red);">${totalMaintenance}</td></tr></tbody></table></div><div style="display:flex;justify-content:flex-end;margin-bottom:12px;"><button class="btn btn-danger" onclick="showHostingSlots()">View Offline / Empty IPs ›</button></div><div id="hostingSlots"></div><p style="color:var(--muted);font-size:11px;margin-top:12px;">Capacity is fixed at 1,120 Hydro miners. Hosting comes from Hydro inventory rows marked Mining; maintenance is the remaining capacity.</p>`;
+  window.hostingReportRows = rows;
+  window.hostingOfflineHydros = offlineHydros;
+  window.hostingMissingIps = missingIps;
+}
+
+async function refreshHostingReport() {
+  await loadInventory();
+  renderHostingReport();
+}
+
+function showHostingSlots(model) {
+  const target = document.getElementById('hostingSlots');
+  if (!target) return;
+  const slots = (window.hostingMissingIps || []).slice().sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+  window.hostingDisplayedIps = slots.slice();
+  target.innerHTML = `<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:10px;"><strong>Hydro miners not hashing</strong><div style="display:flex;gap:8px;align-items:center;"><span style="color:var(--muted);font-size:12px;">${slots.length} listed from 1,120</span><button class="btn btn-secondary btn-sm" onclick="exportHostingMissingIps()">⬇ Export IPs</button></div></div>${slots.length ? `<div style="overflow:auto;border:1px solid var(--border);border-radius:6px;"><table><thead><tr><th>#</th><th>IP Address</th></tr></thead><tbody>${slots.map((ip, i) => `<tr><td style="color:var(--muted);">${i + 1}</td><td style="font-family:var(--mono);color:var(--red);">${escapeHtml(ip)}</td></tr>`).join('')}</tbody></table></div>` : '<p style="color:var(--muted);font-size:12px;">All 1,120 Hydro IPs are hashing.</p>'}</div>`;
+}
+
+function exportHostingMissingIps() {
+  const ips = (window.hostingDisplayedIps || window.hostingMissingIps || []).slice();
+  const ws = XLSX.utils.json_to_sheet(ips.map((ip, i) => ({ Number: i + 1, 'IP Address': ip })));
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Hydro Empty Slots');
+  XLSX.writeFile(wb, `hydro_empty_slots_${new Date().toISOString().slice(0, 10)}.xlsx`);
+  toast(`Exported ${ips.length} Hydro IPs`, 'success');
+}
+
+function exportHostingReport() {
+  const rows = (window.hostingReportRows || []).map(r => ({ Model: r.model, Capacity: r.total, Inventory: r.inventory, Hosting: r.hosting, Maintenance: r.maintenance }));
+  if (!rows.length) { renderHostingReport(); return exportHostingReport(); }
+  const ws = XLSX.utils.json_to_sheet(rows), wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Antsentry Report');
+  XLSX.writeFile(wb, `antsentry_report_${new Date().toISOString().slice(0, 10)}.xlsx`);
+  toast('Hosting report exported', 'success');
+}
+
 // ── MIRFA BREAKDOWN ──────────────────────────────────────────
-function mirfaRowStats(rs) {
+function mirfaRowStats(rs, family) {
   const st = r => String(r.latest_status || '').trim().toLowerCase();
   return {
     total: rs.length,
@@ -2104,7 +2232,9 @@ function mirfaRowStats(rs) {
     diagnosis: rs.filter(r => mirfaStatusFlags(r).diagnosis).length,
     repair: rs.filter(r => mirfaStatusFlags(r).repair).length,
     unrepairable: rs.filter(r => st(r).includes('unrepairable')).length,
-    advanceMasdar: rs.filter(r => st(r).includes('faulty') && st(r).includes('repair')).length,
+    advanceMasdar: rs.filter(r => family === 'Antminer XP'
+      ? /faulty/.test(st(r)) && /repair/.test(st(r))
+      : /advance\s+repair/i.test(r.latest_status || '')).length,
     faulty3: rs.filter(r => st(r).includes('antminer for repair') || st(r).includes('3 bad boards')).length
   };
 }
@@ -2133,7 +2263,7 @@ function renderMirfaBreakdown() {
   let gt = 0, gm = 0, gr = 0, gd = 0, grp = 0, gun = 0, gadv = 0, gf3 = 0;
   const famTotals = {};
   const emitFamily = (family, models) => {
-    const mr = models.map(m => ({ model: m, ...mirfaRowStats(rows.filter(r => modelMatches(r.model, m))) }));
+       const mr = models.map(m => ({ model: m, ...mirfaRowStats(rows.filter(r => modelMatches(r.model, m)), family) }));
     if (mbSortCol) {
       mr.sort((a, b) => {
         if (mbSortCol === 'model') {
@@ -2257,7 +2387,7 @@ function exportMirfaBreakdown() {
   for (const [family, models] of Object.entries(MIRFA_BREAKDOWN)) {
     let fam = { total: 0, mining: 0, ready: 0, diagnosis: 0, repair: 0, unrepairable: 0, advanceMasdar: 0, faulty3: 0 };
     for (const m of models) {
-      const t = mirfaRowStats(all.filter(x => modelMatches(x.model, m)));
+       const t = mirfaRowStats(all.filter(x => modelMatches(x.model, m)), family);
       if (!t.total) continue;
       emit(m, family, t);
       fam.total += t.total; fam.mining += t.mining; fam.ready += t.ready; fam.diagnosis += t.diagnosis;
@@ -2268,7 +2398,7 @@ function exportMirfaBreakdown() {
   if (otherModels.length) {
     let fam = { total: 0, mining: 0, ready: 0, diagnosis: 0, repair: 0, unrepairable: 0, advanceMasdar: 0, faulty3: 0 };
     for (const m of otherModels) {
-      const t = mirfaRowStats(all.filter(x => modelMatches(x.model, m)));
+       const t = mirfaRowStats(all.filter(x => modelMatches(x.model, m)), family);
       emit(m, 'Other Models', t);
       fam.total += t.total; fam.mining += t.mining; fam.ready += t.ready; fam.diagnosis += t.diagnosis;
       fam.repair += t.repair; fam.unrepairable += t.unrepairable; fam.advanceMasdar += t.advanceMasdar; fam.faulty3 += t.faulty3;
@@ -2284,6 +2414,55 @@ function exportMirfaBreakdown() {
   toast(`Exported ${rows.length} rows`, 'success');
 }
 
+function exportBreakdownPdf(title, families, rowFilter, sf, filename, advanceFilter) {
+  if (!window.jspdf || !window.jspdf.jsPDF) { toast('PDF library is not available', 'error'); return; }
+  const doc = new window.jspdf.jsPDF({ orientation: 'landscape', unit: 'pt', format: 'a4' });
+  const margin = 36, width = doc.internal.pageSize.getWidth();
+  const records = allData.filter(rowFilter);
+  const text = r => String(r.latest_status || '').toLowerCase();
+  const advanceRows = advanceFilter ? records.filter(advanceFilter) : records;
+  const summary = [
+    ['Ready for Deployment', records.filter(r => sf(r).ready).length],
+    ['For Diagnosis', records.filter(r => sf(r).diagnosis).length],
+    ['For Repair', records.filter(r => sf(r).repair).length],
+    ['Unrepairable', records.filter(r => /unrepairable/.test(text(r))).length],
+    ['3 Bad Boards', records.filter(r => /3\s*(bad|faulty)\s*boards/.test(text(r))).length],
+    ['Advance Repair', advanceRows.filter(r => /advance\s+repair/.test(text(r)) || (sf === mirfaStatusFlags && /faulty/.test(text(r)) && /repair/.test(text(r)))).length]
+  ];
+  doc.setFillColor(17, 19, 24); doc.rect(0, 0, width, 82, 'F');
+  doc.setTextColor(245, 158, 11); doc.setFontSize(22); doc.text('MiningOps', margin, 38);
+  doc.setTextColor(255, 255, 255); doc.setFontSize(14); doc.text(title, margin, 61);
+  doc.setTextColor(100, 116, 139); doc.setFontSize(9); doc.text(`Generated ${new Date().toLocaleString()}`, width - margin, 61, { align: 'right' });
+  let y = 104;
+  const boxWidth = width - margin * 2;
+  doc.setFillColor(245, 247, 250); doc.roundedRect(margin, y, boxWidth, 78, 5, 5, 'F');
+  doc.setTextColor(23, 32, 51); doc.setFontSize(10); doc.text(`${title} Status`, margin + 10, y + 14);
+  summary.forEach((item, i) => { const col = i % 3, row = Math.floor(i / 3); doc.setFontSize(7); doc.setTextColor(100, 116, 139); doc.text(item[0], margin + 10 + col * (boxWidth / 3), y + 29 + row * 21); doc.setTextColor(23, 32, 51); doc.setFontSize(10); doc.text(String(item[1]), margin + 10 + col * (boxWidth / 3), y + 40 + row * 21); });
+  y += 104;
+  Object.entries(families).forEach(([family, models]) => {
+    doc.setTextColor(23, 32, 51); doc.setFontSize(13); doc.text(family, margin, y); y += 16;
+    doc.setFillColor(226, 231, 238); doc.rect(margin, y - 10, width - margin * 2, 18, 'F');
+    doc.setFontSize(8); doc.text('Model', margin + 6, y + 2); ['Total', 'Mining', 'Ready', 'Diagnosis', 'Repair'].forEach((h, i) => doc.text(h, 360 + i * 72, y + 2)); y += 18;
+    models.forEach(model => {
+      const rows = records.filter(r => modelMatches(r.model, model));
+      if (!rows.length) return;
+      const counts = [rows.length, rows.filter(r => sf(r).mining).length, rows.filter(r => sf(r).ready).length, rows.filter(r => sf(r).diagnosis).length, rows.filter(r => sf(r).repair).length];
+      doc.setTextColor(23, 32, 51); doc.setFontSize(8); doc.text(model, margin + 6, y); counts.forEach((n, i) => doc.text(String(n), 360 + i * 72, y)); y += 15;
+    });
+    y += 14;
+  });
+  doc.save(`${filename}_${new Date().toISOString().slice(0, 10)}.pdf`);
+  toast(`${title} PDF exported`, 'success');
+}
+
+function exportMinerBreakdownPdf() {
+  exportBreakdownPdf('madZ Breakdown', { 'Antminer s19-XP': MINER_BREAKDOWN['Antminer s19-XP'], Avalon: MINER_BREAKDOWN.Avalon }, r => !isMirfa(r) && (r.asset_type || '').toLowerCase() === 'asic miner', statusFlags, 'madz_breakdown', null);
+}
+
+function exportMirfaBreakdownPdf() {
+  exportBreakdownPdf('Mirfa Breakdown', { 'Antminer XP': MIRFA_BREAKDOWN['Antminer XP'], Avalon: MIRFA_BREAKDOWN.Avalon }, isMirfa, mirfaStatusFlags, 'mirfa_breakdown', r => modelMatches(r.model, 'Antminer S19 XP'));
+}
+
 // ── MASTER BREAKDOWN ──────────────────────────────────────────
 function renderMasterBreakdown() {
   const el = document.getElementById('masterbdContent');
@@ -2291,9 +2470,9 @@ function renderMasterBreakdown() {
 
   const num = (n, color) => `<td style="text-align:right;padding:5px 8px;font-family:var(--mono);font-size:12px;${color ? `color:${color};` : ''}">${n}</td>`;
   const siteFromSf = sf => (sf === mirfaStatusFlags) ? 'mirfa' : 'madz';
-  const statCard = (val, lab, cls, family, status) =>
-    `<div class="stat-card ${cls || ''} clickable" onclick="breakdownCardClick('${escAttrJs(family)}','${status}')" title="Click to view serials" style="padding:6px 8px;"><div class="stat-val" style="font-size:18px;">${val}</div><div class="stat-lab" style="font-size:10px;">${lab}</div></div>`;
-  const repairCard = (t, family) => {
+   const statCard = (val, lab, cls, family, status, key = family) =>
+     `<div class="stat-card ${cls || ''} clickable" onclick="breakdownCardClick('${escAttrJs(key)}','${status}')" title="Click to view serials" style="padding:6px 8px;"><div class="stat-val" style="font-size:18px;">${val}</div><div class="stat-lab" style="font-size:10px;">${lab}</div></div>`;
+   const repairCard = (t, family, key = family) => {
     const parts = [];
     if (t.unrepairable) parts.push(`Unrepairable <b style="color:#fff;">${t.unrepairable}</b>`);
     if (t.advanceMasdar) parts.push(`Advance Repair <b style="color:#fff;">${t.advanceMasdar}</b>`);
@@ -2302,20 +2481,21 @@ function renderMasterBreakdown() {
       ? `<div style="margin-top:3px;font-size:9px;line-height:1.4;color:var(--muted);">${parts.map(p => `<span>${p}</span>`).join('<span style="margin:0 4px;color:var(--amber);">|</span>')}</div>`
       : '';
     return t.repair
-      ? `<div class="stat-card amber clickable" onclick="breakdownCardClick('${escAttrJs(family)}','repair')" title="Click to view serials" style="padding:6px 8px;"><div class="stat-val" style="font-size:18px;">${t.repair}</div><div class="stat-lab" style="font-size:10px;">🔧 Repair</div>${sub}</div>`
+       ? `<div class="stat-card amber clickable" onclick="breakdownCardClick('${escAttrJs(key)}','repair')" title="Click to view serials" style="padding:6px 8px;"><div class="stat-val" style="font-size:18px;">${t.repair}</div><div class="stat-lab" style="font-size:10px;">🔧 Repair</div>${sub}</div>`
       : `<div class="stat-card amber" style="padding:6px 8px;"><div class="stat-val" style="font-size:18px;">${t.repair}</div><div class="stat-lab" style="font-size:10px;">🔧 Repair</div>${sub}</div>`;
   };
-  const group = (name, t, sf) => {
+   const group = (name, t, sf, sectionTitle) => {
     if (!t) return '';
-    breakdownFamilyData[name] = { site: siteFromSf(sf), rows: t.rows || [] };
+      const key = `${sectionTitle} — ${name}`;
+     breakdownFamilyData[key] = { site: siteFromSf(sf), rows: t.rows || [] };
     return `<div style="display:grid;gap:4px;">
       <div style="font-weight:700;color:#fff;font-size:12px;letter-spacing:0.5px;">${name}</div>
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;">
-        ${statCard(t.total, 'Total', '', name, 'total')}
-        ${statCard(t.mining, '⚡ Mining', 'green', name, 'mining')}
-        ${statCard(t.ready, '✓ Ready', '', name, 'ready')}
-        ${statCard(t.diagnosis, '⚠ Diagnosis', 'red', name, 'diagnosis')}
-        ${repairCard(t, name)}
+         ${statCard(t.total, 'Total', '', name, 'total', key)}
+         ${statCard(t.mining, '⚡ Mining', 'green', name, 'mining', key)}
+         ${statCard(t.ready, '✓ Ready', '', name, 'ready', key)}
+         ${statCard(t.diagnosis, '⚠ Diagnosis', 'red', name, 'diagnosis', key)}
+         ${repairCard(t, name, key)}
       </div>
     </div>`;
   };
@@ -2325,7 +2505,7 @@ function renderMasterBreakdown() {
     let gt = 0, gm = 0, gr = 0, gd = 0, grp = 0;
     const famTotals = {};
     for (const [family, models] of Object.entries(families)) {
-      const mr = models.map(m => ({ model: m, ...rowStats(allData.filter(r => missingModelFilter(r) && modelMatches(r.model, m))) }));
+      const mr = models.map(m => ({ model: m, ...rowStats(allData.filter(r => missingModelFilter(r) && modelMatches(r.model, m)), family) }));
       const fam = mr.reduce((acc, r) => ({
         total: acc.total + r.total, mining: acc.mining + r.mining, ready: acc.ready + r.ready,
         diagnosis: acc.diagnosis + r.diagnosis, repair: acc.repair + r.repair,
@@ -2356,7 +2536,7 @@ function renderMasterBreakdown() {
     tbody += `<tr style="background:var(--green-dim);font-weight:800;border-top:1px solid var(--border2);">
       <td style="padding:5px 8px;font-size:12px;">All Models Total</td>
       ${num(gt)}${num(gm)}${num(gr)}${num(gd)}${num(grp)}</tr>`;
-    const cards = Object.entries(famTotals).map(([n, t]) => group(n, t, sf)).join('');
+     const cards = Object.entries(famTotals).map(([n, t]) => group(n, t, sf, title)).join('');
     return `
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;">
         <div style="padding:8px 12px;background:var(--surface3);border-bottom:1px solid var(--border);">
@@ -2413,6 +2593,53 @@ function renderMasterBreakdown() {
     </div>`;
   el.querySelectorAll('table').forEach(initResizable);
 }
+
+function exportMasterBreakdownPdf() {
+  if (!window.jspdf || !window.jspdf.jsPDF) { toast('PDF library is not available', 'error'); return; }
+  const doc = new window.jspdf.jsPDF({ orientation: 'landscape', unit: 'pt', format: 'a4' });
+  const margin = 36, width = doc.internal.pageSize.getWidth();
+  doc.setFillColor(17, 19, 24); doc.rect(0, 0, width, 82, 'F');
+  doc.setTextColor(245, 158, 11); doc.setFontSize(22); doc.text('MiningOps', margin, 38);
+  doc.setTextColor(255, 255, 255); doc.setFontSize(14); doc.text('Master Breakdown', margin, 61);
+  doc.setTextColor(100, 116, 139); doc.setFontSize(9); doc.text(`Generated ${new Date().toLocaleString()}`, width - margin, 61, { align: 'right' });
+  let y = 104;
+  const pdfSummary = (title, siteRows, sf, x, boxWidth, advanceRows = siteRows) => {
+    const status = r => String(r.latest_status || '').toLowerCase();
+    const values = [
+      ['Ready for Deployment', siteRows.filter(r => sf(r).ready).length],
+      ['For Diagnosis', siteRows.filter(r => sf(r).diagnosis).length],
+      ['For Repair', siteRows.filter(r => sf(r).repair).length],
+      ['Unrepairable', siteRows.filter(r => /unrepairable/.test(status(r))).length],
+      ['3 Bad Boards', siteRows.filter(r => /3\s*(bad|faulty)\s*boards/.test(status(r))).length],
+      ['Advance Repair', advanceRows.filter(r => /advance\s+repair/.test(status(r)) || (sf === mirfaStatusFlags && /faulty/.test(status(r)) && /repair/.test(status(r)))).length]
+    ];
+    doc.setFillColor(245, 247, 250); doc.roundedRect(x, y, boxWidth, 78, 5, 5, 'F');
+    doc.setTextColor(23, 32, 51); doc.setFontSize(10); doc.text(title, x + 10, y + 14);
+    values.forEach((item, i) => { const col = i % 3, row = Math.floor(i / 3); doc.setFontSize(7); doc.setTextColor(100, 116, 139); doc.text(item[0], x + 10 + col * (boxWidth / 3), y + 29 + row * 21); doc.setTextColor(23, 32, 51); doc.setFontSize(10); doc.text(String(item[1]), x + 10 + col * (boxWidth / 3), y + 40 + row * 21); });
+  };
+  const pdfMadzRows = allData.filter(r => !isMirfa(r) && (r.asset_type || '').toLowerCase() === 'asic miner');
+  const pdfMirfaRows = allData.filter(isMirfa);
+  pdfSummary('madZ Status', pdfMadzRows, statusFlags, margin, (width - margin * 2 - 10) / 2);
+  pdfSummary('Mirfa Status', pdfMirfaRows, mirfaStatusFlags, margin + (width - margin * 2 + 10) / 2, (width - margin * 2 - 10) / 2, pdfMirfaRows.filter(r => modelMatches(r.model, 'Antminer S19 XP')));
+  y += 104;
+  const sections = [{ title: 'madZ Breakdown', filter: r => !isMirfa(r) && (r.asset_type || '').toLowerCase() === 'asic miner', families: madzFamiliesForPdf(), sf: statusFlags }, { title: 'Mirfa Breakdown', filter: isMirfa, families: MIRFA_BREAKDOWN, sf: mirfaStatusFlags }];
+  sections.forEach(section => {
+    doc.setTextColor(23, 32, 51); doc.setFontSize(13); doc.text(section.title, margin, y); y += 16;
+    doc.setFillColor(226, 231, 238); doc.rect(margin, y - 10, width - margin * 2, 18, 'F');
+    doc.setFontSize(8); doc.text('Model', margin + 6, y + 2); ['Total', 'Mining', 'Ready', 'Diagnosis', 'Repair'].forEach((h, i) => doc.text(h, 360 + i * 72, y + 2)); y += 18;
+    Object.entries(section.families).forEach(([family, models]) => models.forEach(model => {
+      const rs = allData.filter(section.filter).filter(r => modelMatches(r.model, model));
+      if (!rs.length) return;
+      const counts = [rs.length, rs.filter(r => section.sf(r).mining).length, rs.filter(r => section.sf(r).ready).length, rs.filter(r => section.sf(r).diagnosis).length, rs.filter(r => section.sf(r).repair).length];
+      doc.setTextColor(23, 32, 51); doc.setFontSize(8); doc.text(model, margin + 6, y); counts.forEach((n, i) => doc.text(String(n), 360 + i * 72, y)); y += 15;
+    }));
+    y += 14;
+  });
+  doc.save(`master_breakdown_${new Date().toISOString().slice(0, 10)}.pdf`);
+  toast('Master Breakdown PDF exported', 'success');
+}
+
+function madzFamiliesForPdf() { return { 'Antminer s19-XP': MINER_BREAKDOWN['Antminer s19-XP'], Avalon: MINER_BREAKDOWN.Avalon }; }
 let psuSelected = new Set();
 let psuDetailRows = [];
 
@@ -5247,7 +5474,7 @@ function stopPoolTimer() { if (poolTimer) { clearInterval(poolTimer); poolTimer 
 function startPoolTimer() { stopPoolTimer(); poolTimer = setInterval(loadPoolStats, 60000); }
 
 function switchView(view) {
-  ['miner','monitor','psu','apsu','mirfabd','masterbd','audit','pool','staff'].forEach(v => {
+  ['miner','monitor','hosting','psu','apsu','mirfabd','masterbd','audit','pool','staff'].forEach(v => {
     document.getElementById(`view-${v}`).classList.toggle('hidden', v !== view);
     const nav = document.getElementById(`nav-${v}`);
     if (nav) nav.classList.toggle('active', v === view);
@@ -5267,10 +5494,20 @@ function switchView(view) {
   if (view === 'miner') renderMinerBreakdown();
   if (view === 'mirfabd') renderMirfaBreakdown();
   if (view === 'masterbd') renderMasterBreakdown();
+  if (view === 'hosting') { refreshHostingReport(); }
   if (view === 'psu') renderPsuInventory();
   if (view === 'apsu') renderApsuInventory();
   if (invVisible) { updateStats(); applyFilters(); }
 }
+
+function applyTheme(theme) {
+  document.body.classList.toggle('light', theme === 'light');
+  const btn = document.getElementById('themeToggle');
+  if (btn) btn.textContent = theme === 'light' ? '☾ Dark' : '☀ Light';
+  localStorage.setItem('mo_theme', theme);
+}
+
+function toggleTheme() { applyTheme(document.body.classList.contains('light') ? 'dark' : 'light'); }
 
 // ── TOAST ────────────────────────────────────────────────────
 function toast(msg, type = 'info') {
@@ -5477,6 +5714,7 @@ function closeStaffModal() { document.getElementById('staffModal').classList.add
 
 // ── INIT ─────────────────────────────────────────────────────
 (async function init() {
+  applyTheme(localStorage.getItem('mo_theme') === 'light' ? 'light' : 'dark');
   document.querySelectorAll('.excel-table').forEach(initResizable);
   fetchBtcStats();
   setInterval(fetchBtcStats, 60000);
