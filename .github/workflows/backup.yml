@@ -18,9 +18,16 @@ jobs:
         run: |
           chmod +x ./backup-export.sh
           ./backup-export.sh
-      - name: Prune backups older than 60 days
+            - name: Prune backups older than 7 days
         run: |
-          find backups -maxdepth 1 -type d -mtime +60 -exec rm -rf {} \; || true
+          CUTOFF=$(date -u -d '7 days ago' +%Y-%m-%d)
+          for d in backups/*/; do
+            name=$(basename "$d")
+            if [[ "$name" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]] && [[ "$name" < "$CUTOFF" ]]; then
+              echo "Deleting $name"
+              rm -rf "$d"
+            fi
+          done
       - name: Commit and push
         run: |
           git config user.name "backup-bot"
