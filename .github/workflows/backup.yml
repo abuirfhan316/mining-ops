@@ -1,8 +1,8 @@
 name: Nightly Supabase Backup
 on:
   schedule:
-    - cron: '0 3 * * *'   # 3 AM UTC daily
-  workflow_dispatch: {}     # lets you trigger it manually from the Actions tab
+    - cron: '0 3 * * *'
+  workflow_dispatch: {}
 permissions:
   contents: write
 jobs:
@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+
       - name: Run export script
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
@@ -18,7 +19,8 @@ jobs:
         run: |
           chmod +x ./backup-export.sh
           ./backup-export.sh
-            - name: Prune backups older than 7 days
+
+      - name: Prune backups older than 7 days
         run: |
           CUTOFF=$(date -u -d '7 days ago' +%Y-%m-%d)
           for d in backups/*/; do
@@ -28,6 +30,7 @@ jobs:
               rm -rf "$d"
             fi
           done
+
       - name: Commit and push
         run: |
           git config user.name "backup-bot"
@@ -35,12 +38,14 @@ jobs:
           git add backups
           git diff --cached --quiet && echo "No changes to commit" || git commit -m "Nightly backup $(date -u +%Y-%m-%d)"
           git push
+
       - name: Zip tonight's export
         run: |
           DATE_STR=$(date -u +%Y-%m-%d)
           zip -j "backup_${DATE_STR}.zip" backups/${DATE_STR}/*.csv
           echo "ZIP_PATH=backup_${DATE_STR}.zip" >> $GITHUB_ENV
           echo "DATE_STR=${DATE_STR}" >> $GITHUB_ENV
+
       - name: Email the backup
         uses: dawidd6/action-send-mail@v3
         with:
