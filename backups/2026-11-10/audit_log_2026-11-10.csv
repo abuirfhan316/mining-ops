@@ -1114,3 +1114,562 @@ id,serial,field,old_value,new_value,changed_at,source,site
 32147,AME31LC000P37KC0A26QG2001,location,WH1,31.12.5,"2026-11-02 10:23:35.771+00","Mining Ops Admin",mirfa
 32148,AME31LC000P37KC0A26QG2001,latest_status,Repaired,Mining,"2026-11-02 10:23:35.771+00","Mining Ops Admin",mirfa
 32149,"MIRFA IMPORT",mirfa_import,"","60 saved, 0 failed","2026-11-02 10:23:36.064+00","Mining Ops Admin",mirfa
+32150,PIEMFEABDAAAD01VG,bulk_edit,"Bitmain Warehouse·For Repair - Taken Out By Repair Tech","Warehouse 2·Ready for deployment - Repaired by Bitmain Tech","2026-11-02 14:38:47.016+00","Mining Ops Admin",madz
+32151,PIEMFEBBDJDAE00KK,bulk_edit,"Bitmain Warehouse·For Repair - Taken Out By Repair Tech","Warehouse 2·Ready for deployment - Repaired by Bitmain Tech","2026-11-02 14:38:47.019+00","Mining Ops Admin",madz
+32152,PIEMFEBBDJDAE020V,bulk_edit,"Bitmain Warehouse·For Repair - Taken Out By Repair Tech","Warehouse 2·Ready for deployment - Repaired by Bitmain Tech","2026-11-02 14:38:47.021+00","Mining Ops Admin",madz
+32153,PIEMFEBBDJEJB00ZF,bulk_edit,"Bitmain Warehouse·For Repair - Taken Out By Repair Tech","Warehouse 2·Ready for deployment - Repaired by Bitmain Tech","2026-11-02 14:38:47.022+00","Mining Ops Admin",madz
+32154,PIEMFEABDJEJB0166,bulk_edit,"Warehouse 2·For Diagnosis","Bitmain Warehouse·For Repair - Taken Out By Repair Tech","2026-11-02 14:39:53.462+00","Mining Ops Admin",madz
+32155,PIEMFEBBDAAAD01D9,bulk_edit,"Warehouse 2·For Diagnosis","Bitmain Warehouse·For Repair - Taken Out By Repair Tech","2026-11-02 14:39:53.466+00","Mining Ops Admin",madz
+32156,PIEMFEBBDJDAE00D7,bulk_edit,"Warehouse 2·For Diagnosis","Bitmain Warehouse·For Repair - Taken Out By Repair Tech","2026-11-02 14:39:53.47+00","Mining Ops Admin",madz
+32157,PIEMFEBBDJDAE019L,bulk_edit,"Warehouse 2·For Diagnosis","Bitmain Warehouse·For Repair - Taken Out By Repair Tech","2026-11-02 14:39:53.473+00","Mining Ops Admin",madz
+32158,PIEMFEBBDJDAE03N9,bulk_edit,"Warehouse 2·For Diagnosis","Bitmain Warehouse·For Repair - Taken Out By Repair Tech","2026-11-02 14:39:53.475+00","Mining Ops Admin",madz
+32159,PIEMFEBBDJEJB00DG,bulk_edit,"Warehouse 2·For Diagnosis","Bitmain Warehouse·For Repair - Taken Out By Repair Tech","2026-11-02 14:39:53.477+00","Mining Ops Admin",madz
+32160,PIEMFECBDJEJB019T,bulk_edit,"Warehouse 2·For Diagnosis","Bitmain Warehouse·For Repair - Taken Out By Repair Tech","2026-11-02 14:39:53.479+00","Mining Ops Admin",madz
+32161,PIEMFEBBDJDAE00D7,bulk_edit,"Bitmain Warehouse·For Repair - Taken Out By Repair Tech","Warehouse 2·For Diagnosis","2026-11-02 14:48:33.63+00","Mining Ops Admin",madz
+32162,AME31LC000MKU4C2A26QA2404,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-02 14:53:50.189+00","Mining Ops Admin",madz
+32163,AME31LC000MQWRC0A26QA2904,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-02 14:53:50.189+00","Mining Ops Admin",madz
+32164,AME31LC000MQWYC0A26QA2904,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-02 14:53:50.189+00","Mining Ops Admin",madz
+32165,AME31LC000P33QC0A26QG1901,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-02 14:53:50.189+00","Mining Ops Admin",madz
+32166,AME31LC000P36CC0A26QG1901,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-02 14:53:50.189+00","Mining Ops Admin",madz
+32167,AME31LC000P38KC0A26QG2001,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-02 14:53:50.19+00","Mining Ops Admin",madz
+32168,PS1A0608000049230816000511,location,10.1.7.1,Warehouse,"2026-11-02 14:57:55.833+00","Mining Ops Admin",madz
+32169,PS1A0608000049230816000511,latest_status,Deployed,"For Repair","2026-11-02 14:57:55.837+00","Mining Ops Admin",madz
+32170,PS1A0608000049230816000279,location,10.14.5.3,Warehouse,"2026-11-02 14:57:55.839+00","Mining Ops Admin",madz
+32171,PS1A0608000049230816000279,latest_status,Deployed,"For Repair","2026-11-02 14:57:55.84+00","Mining Ops Admin",madz
+32172,PS1A0608000049240125000036,location,"",Warehouse,"2026-11-02 14:57:55.841+00","Mining Ops Admin",madz
+32173,PS1A0608000049240125000036,latest_status,"","For Repair","2026-11-02 14:57:55.842+00","Mining Ops Admin",madz
+32174,PS1A0608000049230816000331,location,"",Warehouse,"2026-11-02 14:57:55.844+00","Mining Ops Admin",madz
+32175,PS1A0608000049230816000331,latest_status,"","For Repair","2026-11-02 14:57:55.844+00","Mining Ops Admin",madz
+32176,PS1A0608000049230816000458,location,10.18.10.15,Warehouse,"2026-11-02 14:57:55.845+00","Mining Ops Admin",madz
+32177,PS1A0608000049230816000458,latest_status,Deployed,"For Repair","2026-11-02 14:57:55.846+00","Mining Ops Admin",madz
+32178,PS1A0608000049230712000189,location,"",Warehouse,"2026-11-02 14:57:55.847+00","Mining Ops Admin",madz
+32179,PS1A0608000049230712000189,latest_status,"","For Repair","2026-11-02 14:57:55.847+00","Mining Ops Admin",madz
+32180,PS1A0608000049240125000250,location,Warehouse,AME31LC000MQWYC0A26QA2904,"2026-11-02 14:57:55.848+00","Mining Ops Admin",madz
+32181,PS1A0608000049240125000250,latest_status,"Ready for Deployment – Repaired In-House","Inside Miner","2026-11-02 14:57:55.849+00","Mining Ops Admin",madz
+32182,PS1A0608000049230816000317,location,Warehouse,AME31LC000MQWRC0A26QA2904,"2026-11-02 14:57:55.849+00","Mining Ops Admin",madz
+32183,PS1A0608000049230816000317,latest_status,"Ready for Deployment – Repaired In-House","Inside Miner","2026-11-02 14:57:55.85+00","Mining Ops Admin",madz
+32184,PS1A0608000049230816000946,location,Warehouse,AME31LC000P33QC0A26QG1901,"2026-11-02 14:57:55.85+00","Mining Ops Admin",madz
+32185,PS1A0608000049230816000946,latest_status,"Ready for Deployment – Repaired In-House","Inside Miner","2026-11-02 14:57:55.851+00","Mining Ops Admin",madz
+32186,PS1A0608000049230712000109,location,Warehouse,AME31LC000P36CC0A26QG1901,"2026-11-02 14:57:55.852+00","Mining Ops Admin",madz
+32187,PS1A0608000049230712000109,latest_status,"Ready for Deployment – Repaired In-House","Inside Miner","2026-11-02 14:57:55.853+00","Mining Ops Admin",madz
+32188,PS1A0608000049230712000324,location,Warehouse,AME31LC000P38KC0A26QG2001,"2026-11-02 14:57:55.853+00","Mining Ops Admin",madz
+32189,PS1A0608000049230712000324,latest_status,"Ready for Deployment – Repaired In-House","Inside Miner","2026-11-02 14:57:55.854+00","Mining Ops Admin",madz
+32190,PS1A0608000049240125000609,location,Warehouse,AME31LC000MKU4C2A26QA2404,"2026-11-02 14:57:55.855+00","Mining Ops Admin",madz
+32191,PS1A0608000049240125000609,latest_status,"Ready for Deployment – Repaired In-House","Inside Miner","2026-11-02 14:57:55.856+00","Mining Ops Admin",madz
+32192,"BULK ADD",bulk_add,"","12 saved, 0 failed","2026-11-02 14:57:56.141+00","Mining Ops Admin",madz
+32193,AME31LC000P1LNC0A26QG1605,swap,24.7.4·Mining,"Warehouse 1 · For Diagnosis","2026-11-03 16:28:22.088+00","Mining Ops Admin",madz
+32194,AME31LC000P359C0A26QG1901,swap,"Warehouse 2·Ready For Deployment",24.7.4·Mining,"2026-11-03 16:28:22.089+00","Mining Ops Admin",madz
+32195,JYZZEAABCJFBH0CD5,swap,26.5.4·Mining,"Warehouse 1 · For Diagnosis","2026-11-03 16:28:22.089+00","Mining Ops Admin",madz
+32196,JYZZEABBCJFBH0C8P,swap,"Warehouse 2·Ready For Deployment - Consolidated",26.5.4·Mining,"2026-11-03 16:28:22.091+00","Mining Ops Admin",madz
+32197,JYZZEABBCJDBI01XD,latest_status,"For Diagnosis",Repaired,"2026-11-03 16:29:02.326+00","Mining Ops Admin",madz
+32198,JYZZEAABCJEBB0DR1,latest_status,"For Diagnosis",Repaired,"2026-11-03 16:29:02.332+00","Mining Ops Admin",madz
+32199,JYZZEABBCJFBH0AVS,latest_status,"For Diagnosis",Repaired,"2026-11-03 16:29:02.334+00","Mining Ops Admin",madz
+32200,JYZZEAABCJFBH0ZTC,location,"Warehouse 1","Warehouse 2","2026-11-03 16:29:02.338+00","Mining Ops Admin",madz
+32201,JYZZEAABCJFBH0ZTC,latest_status,"For Diagnosis",Consolidated,"2026-11-03 16:29:02.341+00","Mining Ops Admin",madz
+32202,JYZZEABBCJFBH0X2Y,location,"Warehouse 1","Warehouse 2","2026-11-03 16:29:02.343+00","Mining Ops Admin",madz
+32203,JYZZEABBCJFBH0X2Y,latest_status,"For Diagnosis",Consolidated,"2026-11-03 16:29:02.347+00","Mining Ops Admin",madz
+32204,"BULK ADD",bulk_add,"","5 saved, 0 failed","2026-11-03 16:29:02.605+00","Mining Ops Admin",madz
+32205,JYZZEAABCJFBH0ZTC,bulk_edit,"Warehouse 2·Consolidated","Warehouse 2·Ready For Deployment - Consolidated","2026-11-03 16:33:14.725+00","Mining Ops Admin",madz
+32206,JYZZEABBCJFBH0X2Y,bulk_edit,"Warehouse 2·Consolidated","Warehouse 2·Ready For Deployment - Consolidated","2026-11-03 16:33:14.73+00","Mining Ops Admin",madz
+32207,JYZZEAABCJEBB0DR1,bulk_edit,"Warehouse 1·Repaired","Warehouse 1·Ready For Deployment - Repaired","2026-11-03 16:33:54.812+00","Mining Ops Admin",madz
+32208,JYZZEABBCJDBI01XD,bulk_edit,"Warehouse 1·Repaired","Warehouse 1·Ready For Deployment - Repaired","2026-11-03 16:33:54.813+00","Mining Ops Admin",madz
+32209,JYZZEABBCJFBH0AVS,bulk_edit,"Warehouse 1·Repaired","Warehouse 1·Ready For Deployment - Repaired","2026-11-03 16:33:54.815+00","Mining Ops Admin",madz
+32210,JYZZEAABCJFBH0CD5,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 1·Ready For Deployment - Repaired","2026-11-04 02:10:13.073+00","Mining Ops Admin",madz
+32211,AME31LC000MQUXC0A26QA2904,swap,25.8.13·Mining,"Warehouse 1 · For Diagnosis","2026-11-04 03:16:51.773+00","Mining Ops Admin",madz
+32212,AME31LC000P33QC0A26QG1901,swap,"Warehouse 2·Ready For Deployment - Repaired By PSU swap",25.8.13·Mining,"2026-11-04 03:16:51.774+00","Mining Ops Admin",madz
+32213,AME31LC000MTPPC0A26QC0204,swap,25.6.7·Mining,"Warehouse 1 · For Diagnosis","2026-11-04 03:16:51.775+00","Mining Ops Admin",madz
+32214,AME31LC000MQWYC0A26QA2904,swap,"Warehouse 2·Ready For Deployment - Repaired By PSU swap",25.6.7·Mining,"2026-11-04 03:16:51.775+00","Mining Ops Admin",madz
+32215,AME31LC000P36KC0A26QG1901,swap,25.6.6·Mining,"Warehouse 1 · For Diagnosis","2026-11-04 03:16:51.775+00","Mining Ops Admin",madz
+32216,AME31LC000LCXYC2A26SU2301,swap,"Warehouse 2·Ready For Deployment - Repaired By PSU swap",25.6.6·Mining,"2026-11-04 03:16:51.776+00","Mining Ops Admin",madz
+32217,JYZZEABBCJFBH0WA6,swap,26.6.3·Mining,"Warehouse 1 · For Diagnosis","2026-11-04 03:16:51.776+00","Mining Ops Admin",madz
+32218,JYZZEAABCJFBH0CD5,swap,"Warehouse 1·Ready For Deployment - Repaired",26.6.3·Mining,"2026-11-04 03:16:51.785+00","Mining Ops Admin",madz
+32219,JYZZEAABCJFBH0RPM,swap,26.6.4·Mining,"Warehouse 1 · For Diagnosis","2026-11-04 03:16:51.794+00","Mining Ops Admin",madz
+32220,JYZZEABBCJFBH10EF,swap,"Warehouse 2·Ready For Deployment - Consolidated",26.6.4·Mining,"2026-11-04 03:16:51.798+00","Mining Ops Admin",madz
+32221,JYZZEABBCJCBE02A9,swap,26.5.11·Mining,"Warehouse 1 · For Diagnosis","2026-11-04 03:16:51.813+00","Mining Ops Admin",madz
+32222,YNAHEABBCJFBJ0AB1,swap,"Warehouse 2·Ready For Deployment",26.5.11·Mining,"2026-11-04 03:16:51.818+00","Mining Ops Admin",madz
+32223,JYZZEAABCJEBB0DR1,bulk_edit,"Warehouse 1·Ready For Deployment - Repaired","Warehouse 1·Repaired","2026-11-04 03:41:25.134+00","Mining Ops Admin",madz
+32224,JYZZEABBCJDBI01XD,bulk_edit,"Warehouse 1·Ready For Deployment - Repaired","Warehouse 1·Repaired","2026-11-04 03:41:25.137+00","Mining Ops Admin",madz
+32225,JYZZEABBCJFBH0AVS,bulk_edit,"Warehouse 1·Ready For Deployment - Repaired","Warehouse 1·Repaired","2026-11-04 03:41:25.139+00","Mining Ops Admin",madz
+32226,PIEMFEBBDJDAE020V,location,"Warehouse 2",106.6.6,"2026-11-04 06:24:47.657+00","Mining Ops Admin",madz
+32227,PIEMFEBBDJDAE020V,latest_status,"Ready for deployment - Repaired by Bitmain Tech",Mining,"2026-11-04 06:24:47.677+00","Mining Ops Admin",madz
+32228,PIEMFEBBDJDAE00KK,location,"Warehouse 2",106.10.2,"2026-11-04 06:24:47.686+00","Mining Ops Admin",madz
+32229,PIEMFEBBDJDAE00KK,latest_status,"Ready for deployment - Repaired by Bitmain Tech",Mining,"2026-11-04 06:24:47.691+00","Mining Ops Admin",madz
+32230,PIEMFEBBDJEJB00ZF,location,"Warehouse 2",106.2.5,"2026-11-04 06:24:47.7+00","Mining Ops Admin",madz
+32231,PIEMFEBBDJEJB00ZF,latest_status,"Ready for deployment - Repaired by Bitmain Tech",Mining,"2026-11-04 06:24:47.71+00","Mining Ops Admin",madz
+32232,PIEMFEABDAAAD01VG,location,"Warehouse 2",106.9.11,"2026-11-04 06:24:47.715+00","Mining Ops Admin",madz
+32233,PIEMFEABDAAAD01VG,latest_status,"Ready for deployment - Repaired by Bitmain Tech",Mining,"2026-11-04 06:24:47.748+00","Mining Ops Admin",madz
+32234,"BULK ADD",bulk_add,"","4 saved, 0 failed","2026-11-04 06:24:48.145+00","Mining Ops Admin",madz
+32235,JYZZEABBCJEBB041T,swap,26.7.15·Mining,"Warehouse 1 · For Diagnosis","2026-11-04 17:23:40+00","Mining Ops Admin",madz
+32236,JYZZEABBCJFBH0X2Y,swap,"Warehouse 2·Ready For Deployment - Consolidated",26.7.15·Mining,"2026-11-04 17:23:40.002+00","Mining Ops Admin",madz
+32237,JYZZEABBCJFBH0X9E,bulk_edit,"Warehouse 1·For Repair - 3 Faulty Boards","Warehouse 1·Ready For Deployment - Repaired","2026-11-04 17:24:38.336+00","Mining Ops Admin",madz
+32238,YNAHEAABCJABD042G,bulk_edit,"Warehouse 1·Unrepairable – Declared By Masdar Team","Warehouse 1·Scrapped","2026-11-04 17:25:08.313+00","Mining Ops Admin",madz
+32239,JYZZEAABCJEBB0DR1,bulk_edit,"Warehouse 1·Repaired","Warehouse 1·Ready For Deployment - Repaired","2026-11-04 17:29:14.753+00","Mining Ops Admin",madz
+32240,JYZZEABBCJDBI01XD,bulk_edit,"Warehouse 1·Repaired","Warehouse 1·Ready For Deployment - Repaired","2026-11-04 17:29:14.754+00","Mining Ops Admin",madz
+32241,JYZZEABBCJFBH0AVS,bulk_edit,"Warehouse 1·Repaired","Warehouse 1·Ready For Deployment - Repaired","2026-11-04 17:29:14.756+00","Mining Ops Admin",madz
+32242,AME31LC000MKVKC2A26QA2404,swap,1.6.1·Mining,"Warehouse 1 · For Diagnosis","2026-11-05 07:01:30.645+00","Mining Ops Admin",madz
+32243,AME31LC000MKV7C2A26QA2404,swap,"Warehouse 2·Ready For Deployment",1.6.1·Mining,"2026-11-05 07:01:30.645+00","Mining Ops Admin",madz
+32244,JYZZEAABCJFBH0RPM,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 1·For Repair - 3 Faulty Boards","2026-11-05 08:32:28.238+00","Mining Ops Admin",madz
+32245,JYZZEABBCJDBI067S,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 1·For Repair - 3 Faulty Boards","2026-11-05 08:32:28.244+00","Mining Ops Admin",madz
+32246,JYZZEABBCJFBH08PL,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 1·For Repair - 3 Faulty Boards","2026-11-05 08:32:28.25+00","Mining Ops Admin",madz
+32247,JYZZEAABCJFBH099S,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Consolidated","2026-11-05 08:33:16.325+00","Mining Ops Admin",madz
+32248,JYZZEAABCJFBH0ZSX,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Consolidated","2026-11-05 08:33:16.331+00","Mining Ops Admin",madz
+32249,JYZZEABBCJCBE02A9,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Consolidated","2026-11-05 08:33:16.336+00","Mining Ops Admin",madz
+32250,JYZZEABBCJEBB041T,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Consolidated","2026-11-05 08:33:16.349+00","Mining Ops Admin",madz
+32251,JYZZEABBCJFBH0WA6,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Consolidated","2026-11-05 08:33:16.356+00","Mining Ops Admin",madz
+32252,PCGPW1212154E3995,location,"",Warehouse,"2026-11-05 09:48:23.127+00","Mining Ops Admin",madz
+32253,PCGPW1212154E3995,latest_status,"","For Diagnosis","2026-11-05 09:48:23.13+00","Mining Ops Admin",madz
+32254,KLKT329BCJGAI1833,location,10.14.5.2,Warehouse,"2026-11-05 09:48:23.132+00","Mining Ops Admin",madz
+32255,KLKT329BCJGAI1833,latest_status,Deployed,"For Diagnosis","2026-11-05 09:48:23.133+00","Mining Ops Admin",madz
+32256,PCGPW1212154E8371,location,Warehouse,10.17.5.13,"2026-11-05 09:48:23.133+00","Mining Ops Admin",madz
+32257,PCGPW1212154E8371,latest_status,"Ready for Deployment",Deployed,"2026-11-05 09:48:23.134+00","Mining Ops Admin",madz
+32258,DGQG324BBJGAB0145,location,Warehouse,10.14.5.2,"2026-11-05 09:48:23.134+00","Mining Ops Admin",madz
+32259,DGQG324BBJGAB0145,latest_status,"Ready for Deployment",Deployed,"2026-11-05 09:48:23.134+00","Mining Ops Admin",madz
+32260,"BULK ADD",bulk_add,"","4 saved, 0 failed","2026-11-05 09:48:23.449+00","Mining Ops Admin",madz
+32261,JYZZEABBCJFBH0WXV,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Consolidated","2026-11-05 15:14:50.164+00","Mining Ops Admin",madz
+32262,JYZZEABBCJFBH00H1,bulk_edit,"Warehouse 1·For Repair - 3 Faulty Boards","Warehouse 1·Ready For Deployment - Repaired","2026-11-05 15:15:56.653+00","Mining Ops Admin",madz
+32263,JYZZEAABCJEBB0RX1,bulk_edit,"Warehouse 1·For Repair - 3 Faulty Boards","Warehouse 1·Scrapped","2026-11-06 02:15:25.705+00","Mining Ops Admin",madz
+32264,AME31LC000MQXMC0A26QA2904,swap,18.6.6·Mining,"Warehouse 1 · For Diagnosis","2026-11-06 17:59:40.721+00","Mining Ops Admin",madz
+32265,AME31LC000P1LFC0A26QG1605,swap,"Warehouse 2·Ready For Deployment - Repaired By PSU swap",18.6.6·Mining,"2026-11-06 17:59:40.722+00","Mining Ops Admin",madz
+32266,AME31LC000P1MAC0A26QG1605,swap,21.9.8·Mining,"Warehouse 1 · For Diagnosis","2026-11-06 17:59:40.722+00","Mining Ops Admin",madz
+32267,AME31LC000MKU9C2A26QA2404,swap,"Warehouse 2·Ready For Deployment - Repaired By PSU swap",21.9.8·Mining,"2026-11-06 17:59:40.723+00","Mining Ops Admin",madz
+32268,PIEMFEBBDJDAE020V,bulk_edit,106.6.6·Mining,"Warehouse 2·For Diagnosis","2026-11-06 18:00:14.114+00","Mining Ops Admin",madz
+32269,JYZZEABBCJFBH051P,bulk_edit,"Warehouse 1·For Repair - 3 Faulty Boards","Warehouse 1·Ready For Deployment - Repaired","2026-11-06 18:01:02.71+00","Mining Ops Admin",madz
+32270,YNAHEABBCJABD12RN,bulk_edit,"Warehouse 1·Unrepairable – Declared By Masdar Team","Warehouse 1·Scrapped","2026-11-06 18:02:41.351+00","Mining Ops Admin",madz
+32271,PIEMFEBBDJDAE00KK,bulk_edit,106.10.2·Mining,"Warehouse 2·For Diagnosis","2026-11-06 18:04:12.572+00","Mining Ops Admin",madz
+32272,AME31LC000P6Y6C0A26QG2503,location,17.6.10,WH1,"2026-11-07 02:44:38.073+00","Mining Ops Admin",mirfa
+32273,AME31LC000P6Y6C0A26QG2503,latest_status,Mining,"For Repair","2026-11-07 02:44:38.073+00","Mining Ops Admin",mirfa
+32274,AMD61LC000N76NC0A21QE0101,location,20.12.3,17.6.10,"2026-11-07 02:44:38.074+00","Mining Ops Admin",mirfa
+32275,PIEMFECBDJEJB019B,location,114.7.1,"Tech Bldg","2026-11-07 02:44:38.074+00","Mining Ops Admin",mirfa
+32276,PIEMFECBDJEJB019B,latest_status,Mining,"For Repair","2026-11-07 02:44:38.075+00","Mining Ops Admin",mirfa
+32277,AME31LC000P4J8C0A26QG2101,location,19.11.14,WH1,"2026-11-07 02:44:38.078+00","Mining Ops Admin",mirfa
+32278,AME31LC000P4J8C0A26QG2101,latest_status,Mining,Repaired,"2026-11-07 02:44:38.078+00","Mining Ops Admin",mirfa
+32279,AMD61LC000N7GXC0A21QE0101,location,19.11.6,WH1,"2026-11-07 02:44:38.078+00","Mining Ops Admin",mirfa
+32280,AMD61LC000N7GXC0A21QE0101,latest_status,Mining,Repaired,"2026-11-07 02:44:38.078+00","Mining Ops Admin",mirfa
+32281,AMD61LC000N74UC0A21QE0101,location,19.11.11,WH1,"2026-11-07 02:44:38.078+00","Mining Ops Admin",mirfa
+32282,AMD61LC000N74UC0A21QE0101,latest_status,Mining,"For Repair","2026-11-07 02:44:38.078+00","Mining Ops Admin",mirfa
+32283,AMD61LC000N78GC0A21QE0101,location,19.11.16,WH1,"2026-11-07 02:44:38.078+00","Mining Ops Admin",mirfa
+32284,AMD61LC000N78GC0A21QE0101,latest_status,Mining,"For Repair","2026-11-07 02:44:38.078+00","Mining Ops Admin",mirfa
+32285,AMD61LC000N78RC0A21QE0101,location,19.11.9,WH1,"2026-11-07 02:44:38.078+00","Mining Ops Admin",mirfa
+32286,AMD61LC000N78RC0A21QE0101,latest_status,Mining,"For Repair","2026-11-07 02:44:38.078+00","Mining Ops Admin",mirfa
+32287,AMD61LC000N78TC0A21QE0101,location,19.11.13,WH1,"2026-11-07 02:44:38.078+00","Mining Ops Admin",mirfa
+32288,AMD61LC000N78TC0A21QE0101,latest_status,Mining,"For Repair","2026-11-07 02:44:38.078+00","Mining Ops Admin",mirfa
+32289,AMD61LC000N79JC0A21QE0101,location,19.11.8,WH1,"2026-11-07 02:44:38.078+00","Mining Ops Admin",mirfa
+32290,AMD61LC000N79JC0A21QE0101,latest_status,Mining,Repaired,"2026-11-07 02:44:38.078+00","Mining Ops Admin",mirfa
+32291,AMD61LC000N7A1C0A21QE0101,location,19.11.5,WH1,"2026-11-07 02:44:38.078+00","Mining Ops Admin",mirfa
+32292,AMD61LC000N7A1C0A21QE0101,latest_status,Mining,"For Repair","2026-11-07 02:44:38.078+00","Mining Ops Admin",mirfa
+32293,AMD61LC000N8DRC2A21QE0206,location,19.11.15,WH1,"2026-11-07 02:44:38.078+00","Mining Ops Admin",mirfa
+32294,AMD61LC000N8DRC2A21QE0206,latest_status,Mining,Repaired,"2026-11-07 02:44:38.079+00","Mining Ops Admin",mirfa
+32295,AMD61LC000N8ESC2A21QE0206,location,19.11.12,WH1,"2026-11-07 02:44:38.079+00","Mining Ops Admin",mirfa
+32296,AMD61LC000N8ESC2A21QE0206,latest_status,Mining,"For Repair","2026-11-07 02:44:38.079+00","Mining Ops Admin",mirfa
+32297,AME31LC000PTV0C0A27QL1303,location,19.11.3,WH1,"2026-11-07 02:44:38.079+00","Mining Ops Admin",mirfa
+32298,AME31LC000PTV0C0A27QL1303,latest_status,Mining,Repaired,"2026-11-07 02:44:38.079+00","Mining Ops Admin",mirfa
+32299,JYZZEABBCJFBH0A7W,location,Warehouse,19.11.7,"2026-11-07 02:44:38.079+00","Mining Ops Admin",mirfa
+32300,JYZZEABBCJFBH0A7W,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.08+00","Mining Ops Admin",mirfa
+32301,JYZZEABBCJFBH0XWS,location,Warehouse,19.11.16,"2026-11-07 02:44:38.082+00","Mining Ops Admin",mirfa
+32302,JYZZEABBCJFBH0XWS,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.083+00","Mining Ops Admin",mirfa
+32303,NGSBEAABCJDAA0ANJ,location,Warehouse,19.11.5,"2026-11-07 02:44:38.084+00","Mining Ops Admin",mirfa
+32304,NGSBEAABCJDAA0ANJ,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.085+00","Mining Ops Admin",mirfa
+32305,SMTTEABBBAAJC014S,location,Warehouse,19.11.8,"2026-11-07 02:44:38.086+00","Mining Ops Admin",mirfa
+32306,SMTTEABBBAAJC014S,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.087+00","Mining Ops Admin",mirfa
+32307,AME31LC000P31FC0A26QG1901,location,19.11.7,WH1,"2026-11-07 02:44:38.088+00","Mining Ops Admin",mirfa
+32308,AME31LC000P31FC0A26QG1901,latest_status,Mining,Repaired,"2026-11-07 02:44:38.088+00","Mining Ops Admin",mirfa
+32309,AMD61LC000N735C0A21QE0101,location,19.11.4,WH1,"2026-11-07 02:44:38.088+00","Mining Ops Admin",mirfa
+32310,AMD61LC000N735C0A21QE0101,latest_status,Mining,"For Repair","2026-11-07 02:44:38.088+00","Mining Ops Admin",mirfa
+32311,AMD61LC000N7BDC0A21QE0101,location,19.11.10,WH1,"2026-11-07 02:44:38.088+00","Mining Ops Admin",mirfa
+32312,AMD61LC000N7BDC0A21QE0101,latest_status,Mining,"For Repair","2026-11-07 02:44:38.088+00","Mining Ops Admin",mirfa
+32313,JYZZEAABCJEBB0G53,location,Warehouse,19.11.6,"2026-11-07 02:44:38.088+00","Mining Ops Admin",mirfa
+32314,JYZZEAABCJEBB0G53,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.088+00","Mining Ops Admin",mirfa
+32315,JYZZEABBCJFBH04A5,location,Warehouse,19.11.2,"2026-11-07 02:44:38.089+00","Mining Ops Admin",mirfa
+32316,JYZZEABBCJFBH04A5,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.089+00","Mining Ops Admin",mirfa
+32317,SMTTEABBCJCJF024P,location,Warehouse,19.11.9,"2026-11-07 02:44:38.09+00","Mining Ops Admin",mirfa
+32318,SMTTEABBCJCJF024P,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.09+00","Mining Ops Admin",mirfa
+32319,JYZZEAABCJFBH074G,location,Warehouse,19.11.13,"2026-11-07 02:44:38.091+00","Mining Ops Admin",mirfa
+32320,JYZZEAABCJFBH074G,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.091+00","Mining Ops Admin",mirfa
+32321,JYZZEAABCJFBH0SZ7,location,Warehouse,19.11.10,"2026-11-07 02:44:38.091+00","Mining Ops Admin",mirfa
+32322,JYZZEAABCJFBH0SZ7,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.092+00","Mining Ops Admin",mirfa
+32323,JYZZEABBCJFBH04J7,location,Warehouse,19.11.11,"2026-11-07 02:44:38.092+00","Mining Ops Admin",mirfa
+32324,JYZZEABBCJFBH04J7,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.092+00","Mining Ops Admin",mirfa
+32325,JYZZEABBCJFBH0ECC,location,Warehouse,19.11.15,"2026-11-07 02:44:38.093+00","Mining Ops Admin",mirfa
+32326,JYZZEABBCJFBH0ECC,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.093+00","Mining Ops Admin",mirfa
+32327,AME31LC000P71UC0A26QG2503,location,19.11.2,WH1,"2026-11-07 02:44:38.093+00","Mining Ops Admin",mirfa
+32328,AME31LC000P71UC0A26QG2503,latest_status,Mining,Repaired,"2026-11-07 02:44:38.094+00","Mining Ops Admin",mirfa
+32329,AME31LC000P36UC0A26QG1901,location,19.11.1,WH1,"2026-11-07 02:44:38.094+00","Mining Ops Admin",mirfa
+32330,AME31LC000P36UC0A26QG1901,latest_status,Mining,Repaired,"2026-11-07 02:44:38.094+00","Mining Ops Admin",mirfa
+32331,JYZZEAABCJDBI01C2,location,Warehouse,19.11.1,"2026-11-07 02:44:38.094+00","Mining Ops Admin",mirfa
+32332,JYZZEAABCJDBI01C2,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.094+00","Mining Ops Admin",mirfa
+32333,JYZZEAABCJEBB0M82,location,Warehouse,19.11.4,"2026-11-07 02:44:38.094+00","Mining Ops Admin",mirfa
+32334,JYZZEAABCJEBB0M82,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.094+00","Mining Ops Admin",mirfa
+32335,JYZZEABBCJFBH031D,location,Warehouse,19.11.3,"2026-11-07 02:44:38.094+00","Mining Ops Admin",mirfa
+32336,JYZZEABBCJFBH031D,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.095+00","Mining Ops Admin",mirfa
+32337,JYZZEABBCJFBH0C3G,location,Warehouse,19.11.12,"2026-11-07 02:44:38.095+00","Mining Ops Admin",mirfa
+32338,JYZZEABBCJFBH0C3G,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.095+00","Mining Ops Admin",mirfa
+32339,NGSBEAABCJEJD056N,location,Warehouse,19.11.14,"2026-11-07 02:44:38.096+00","Mining Ops Admin",mirfa
+32340,NGSBEAABCJEJD056N,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.096+00","Mining Ops Admin",mirfa
+32341,AME31LC000P35EC0A26QG1901,location,22.1.8,WH1,"2026-11-07 02:44:38.097+00","Mining Ops Admin",mirfa
+32342,AME31LC000P35EC0A26QG1901,latest_status,Mining,"For Repair","2026-11-07 02:44:38.097+00","Mining Ops Admin",mirfa
+32343,AMD61LC000N76JC0A21QE0101,location,20.12.13,22.1.8,"2026-11-07 02:44:38.097+00","Mining Ops Admin",mirfa
+32344,AME31LC000P20MC0A26QG1801,location,20.12.14,28.5.2,"2026-11-07 02:44:38.097+00","Mining Ops Admin",mirfa
+32345,JYZZEABBCJFBH0BH9,location,Warehouse,WH1,"2026-11-07 02:44:38.097+00","Mining Ops Admin",mirfa
+32346,JYZZEABBCJFBH0BH9,latest_status,Consolidated,"For Diagnosis","2026-11-07 02:44:38.097+00","Mining Ops Admin",mirfa
+32347,SMTTEABBCJCJF0882,location,Warehouse,20.12.7,"2026-11-07 02:44:38.097+00","Mining Ops Admin",mirfa
+32348,SMTTEABBCJCJF0882,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.098+00","Mining Ops Admin",mirfa
+32349,AME31LC000PVGFC0A27QL1305,location,28.5.2,WH1,"2026-11-07 02:44:38.098+00","Mining Ops Admin",mirfa
+32350,AME31LC000PVGFC0A27QL1305,latest_status,Mining,"For Repair","2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32351,AME31LC000P3F6C0A26QG2001,location,20.12.12,WH1,"2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32352,AME31LC000P3F6C0A26QG2001,latest_status,Mining,"For Repair","2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32353,AME31LC000P4THC0A26QG2101,location,20.12.10,WH1,"2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32354,AME31LC000P4THC0A26QG2101,latest_status,Mining,Repaired,"2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32355,AME31LC000P6YDC0A26QG2503,location,20.12.9,WH1,"2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32356,AME31LC000P6YDC0A26QG2503,latest_status,Mining,Repaired,"2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32357,AMD61LC000L34EC2A21SN2403,location,20.12.15,WH1,"2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32358,AMD61LC000L34EC2A21SN2403,latest_status,Mining,Repaired,"2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32359,AMD61LC000L373C2A21SN2403,location,20.12.7,WH1,"2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32360,AMD61LC000L373C2A21SN2403,latest_status,Mining,Repaired,"2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32361,AMD61LC000N7FUC0A21QE0101,location,20.12.16,WH1,"2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32362,AMD61LC000N7FUC0A21QE0101,latest_status,Mining,"For Repair","2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32363,AMD61LC000N7FXC0A21QE0101,location,20.12.1,WH1,"2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32364,AMD61LC000N7FXC0A21QE0101,latest_status,Mining,"For Repair","2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32365,AMD61LC000N7G1C0A21QE0101,location,20.12.11,WH1,"2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32366,AMD61LC000N7G1C0A21QE0101,latest_status,Mining,"For Repair","2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32367,AMD61LC000N7G6C0A21QE0101,location,20.12.5,WH1,"2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32368,AMD61LC000N7G6C0A21QE0101,latest_status,Mining,Repaired,"2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32369,AMD61LC000N7GFC0A21QE0101,location,20.12.6,WH1,"2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32370,AMD61LC000N7GFC0A21QE0101,latest_status,Mining,Repaired,"2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32371,JYZZEABBCJDBI03EG,location,Warehouse,20.12.8,"2026-11-07 02:44:38.099+00","Mining Ops Admin",mirfa
+32372,JYZZEABBCJDBI03EG,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.1+00","Mining Ops Admin",mirfa
+32373,JYZZEABBCJFBH031K,location,Warehouse,20.12.11,"2026-11-07 02:44:38.1+00","Mining Ops Admin",mirfa
+32374,JYZZEABBCJFBH031K,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.1+00","Mining Ops Admin",mirfa
+32375,JYZZEABBCJFBH08T3,location,Warehouse,20.12.15,"2026-11-07 02:44:38.101+00","Mining Ops Admin",mirfa
+32376,JYZZEABBCJFBH08T3,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.101+00","Mining Ops Admin",mirfa
+32377,JYZZEABBCJFBH0JYT,location,Warehouse,20.12.6,"2026-11-07 02:44:38.101+00","Mining Ops Admin",mirfa
+32378,JYZZEABBCJFBH0JYT,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.102+00","Mining Ops Admin",mirfa
+32379,AMD61LC000N72VC0A21QE0101,location,20.12.2,WH1,"2026-11-07 02:44:38.102+00","Mining Ops Admin",mirfa
+32380,AMD61LC000N72VC0A21QE0101,latest_status,Mining,Repaired,"2026-11-07 02:44:38.102+00","Mining Ops Admin",mirfa
+32381,AME31LC000P2Y1C0A26QG1901,location,20.12.8,WH1,"2026-11-07 02:44:38.102+00","Mining Ops Admin",mirfa
+32382,AME31LC000P2Y1C0A26QG1901,latest_status,Mining,Repaired,"2026-11-07 02:44:38.102+00","Mining Ops Admin",mirfa
+32383,JYZZEAABCJFBH07WV,location,Warehouse,20.12.3,"2026-11-07 02:44:38.102+00","Mining Ops Admin",mirfa
+32384,JYZZEAABCJFBH07WV,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.102+00","Mining Ops Admin",mirfa
+32385,JYZZEABBCJDBI00NC,location,Warehouse,20.12.2,"2026-11-07 02:44:38.103+00","Mining Ops Admin",mirfa
+32386,JYZZEABBCJDBI00NC,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.103+00","Mining Ops Admin",mirfa
+32387,JYZZEABBCJFBH04FV,location,Warehouse,20.12.9,"2026-11-07 02:44:38.103+00","Mining Ops Admin",mirfa
+32388,JYZZEABBCJFBH04FV,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.104+00","Mining Ops Admin",mirfa
+32389,JYZZEABBCJFBH04JB,location,Warehouse,20.12.4,"2026-11-07 02:44:38.104+00","Mining Ops Admin",mirfa
+32390,JYZZEABBCJFBH04JB,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.104+00","Mining Ops Admin",mirfa
+32391,SMTTEABBBAAJC0124,location,Warehouse,20.12.12,"2026-11-07 02:44:38.105+00","Mining Ops Admin",mirfa
+32392,SMTTEABBBAAJC0124,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.105+00","Mining Ops Admin",mirfa
+32393,AMD61LC000L5U3C0A21SQ1001,location,20.12.4,WH1,"2026-11-07 02:44:38.106+00","Mining Ops Admin",mirfa
+32394,AMD61LC000L5U3C0A21SQ1001,latest_status,Mining,Repaired,"2026-11-07 02:44:38.106+00","Mining Ops Admin",mirfa
+32395,JYZZEAABCJEBB0M98,location,Warehouse,20.12.16,"2026-11-07 02:44:38.106+00","Mining Ops Admin",mirfa
+32396,JYZZEAABCJEBB0M98,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.106+00","Mining Ops Admin",mirfa
+32397,JYZZEAABCJEBB0M9P,location,Warehouse,20.12.5,"2026-11-07 02:44:38.106+00","Mining Ops Admin",mirfa
+32398,JYZZEAABCJEBB0M9P,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.106+00","Mining Ops Admin",mirfa
+32399,JYZZEAABCJEBB0VGF,location,Warehouse,20.12.14,"2026-11-07 02:44:38.107+00","Mining Ops Admin",mirfa
+32400,JYZZEAABCJEBB0VGF,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.107+00","Mining Ops Admin",mirfa
+32401,JYZZEAABCJHJH00G7,location,Warehouse,20.12.1,"2026-11-07 02:44:38.107+00","Mining Ops Admin",mirfa
+32402,JYZZEAABCJHJH00G7,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.107+00","Mining Ops Admin",mirfa
+32403,JYZZEAABCJHJH00H5,location,Warehouse,20.12.10,"2026-11-07 02:44:38.108+00","Mining Ops Admin",mirfa
+32404,JYZZEAABCJHJH00H5,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.108+00","Mining Ops Admin",mirfa
+32405,JYZZEAABCJHJH00P0,location,Warehouse,20.12.13,"2026-11-07 02:44:38.108+00","Mining Ops Admin",mirfa
+32406,JYZZEAABCJHJH00P0,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.108+00","Mining Ops Admin",mirfa
+32407,AME31LC000P204C0A26QG1801,location,21.12.11,WH1,"2026-11-07 02:44:38.109+00","Mining Ops Admin",mirfa
+32408,AME31LC000P204C0A26QG1801,latest_status,Mining,"For Repair","2026-11-07 02:44:38.109+00","Mining Ops Admin",mirfa
+32409,DGAHGBBBEJDAD00HX,location,"MadZ DC",115.12.15,"2026-11-07 02:44:38.109+00","Mining Ops Admin",mirfa
+32410,DGAHGBBBEJDAD00HX,latest_status,Repaired,Mining,"2026-11-07 02:44:38.109+00","Mining Ops Admin",mirfa
+32411,DGAHGBBBEJDAD0164,location,"MadZ DC",115.6.7,"2026-11-07 02:44:38.109+00","Mining Ops Admin",mirfa
+32412,DGAHGBBBEJDAD0164,latest_status,Repaired,Mining,"2026-11-07 02:44:38.109+00","Mining Ops Admin",mirfa
+32413,ONETFEABDAAJH029S,location,"MadZ DC",115.6.5,"2026-11-07 02:44:38.109+00","Mining Ops Admin",mirfa
+32414,ONETFEABDAAJH029S,latest_status,Repaired,Mining,"2026-11-07 02:44:38.11+00","Mining Ops Admin",mirfa
+32415,DGAHGBBBEJEJF005A,location,107.10.1,"Tech Bldg","2026-11-07 02:44:38.11+00","Mining Ops Admin",mirfa
+32416,DGAHGBBBEJEJF005A,latest_status,Mining,"For Repair","2026-11-07 02:44:38.11+00","Mining Ops Admin",mirfa
+32417,DGAHGBBBEJDAD00V7,location,"MadZ DC",107.10.1,"2026-11-07 02:44:38.11+00","Mining Ops Admin",mirfa
+32418,DGAHGBBBEJDAD00V7,latest_status,Repaired,Mining,"2026-11-07 02:44:38.11+00","Mining Ops Admin",mirfa
+32419,DGAHGBBBEJDAD013W,location,103.12.3,"Tech Bldg","2026-11-07 02:44:38.111+00","Mining Ops Admin",mirfa
+32420,DGAHGBBBEJDAD013W,latest_status,Mining,"For Repair","2026-11-07 02:44:38.111+00","Mining Ops Admin",mirfa
+32421,ONETFEABDJFJE01JK,location,"MadZ DC",115.5.3,"2026-11-07 02:44:38.111+00","Mining Ops Admin",mirfa
+32422,ONETFEABDJFJE01JK,latest_status,Repaired,Mining,"2026-11-07 02:44:38.111+00","Mining Ops Admin",mirfa
+32423,DGAHGBBBEJDAD014Y,location,"MadZ DC",115.6.6,"2026-11-07 02:44:38.112+00","Mining Ops Admin",mirfa
+32424,DGAHGBBBEJDAD014Y,latest_status,Repaired,Mining,"2026-11-07 02:44:38.112+00","Mining Ops Admin",mirfa
+32425,ONETFEBBDJFJE0037,location,"MadZ DC",115.6.4,"2026-11-07 02:44:38.112+00","Mining Ops Admin",mirfa
+32426,ONETFEBBDJFJE0037,latest_status,Repaired,Mining,"2026-11-07 02:44:38.112+00","Mining Ops Admin",mirfa
+32427,DGAHGBBBEJDAD00W2,location,"MadZ DC",103.12.3,"2026-11-07 02:44:38.113+00","Mining Ops Admin",mirfa
+32428,DGAHGBBBEJDAD00W2,latest_status,Repaired,Mining,"2026-11-07 02:44:38.113+00","Mining Ops Admin",mirfa
+32429,YNAHFEABEJABA00K9,location,"MadZ DC",115.6.3,"2026-11-07 02:44:38.113+00","Mining Ops Admin",mirfa
+32430,YNAHFEABEJABA00K9,latest_status,Repaired,Mining,"2026-11-07 02:44:38.113+00","Mining Ops Admin",mirfa
+32431,PIEMFECBDJDAE02N7,location,"MadZ DC",115.6.1,"2026-11-07 02:44:38.114+00","Mining Ops Admin",mirfa
+32432,PIEMFECBDJDAE02N7,latest_status,Repaired,Mining,"2026-11-07 02:44:38.115+00","Mining Ops Admin",mirfa
+32433,YNAHFEBBEJABA00G1,location,"MadZ DC",115.10.7,"2026-11-07 02:44:38.115+00","Mining Ops Admin",mirfa
+32434,YNAHFEBBEJABA00G1,latest_status,Repaired,Mining,"2026-11-07 02:44:38.116+00","Mining Ops Admin",mirfa
+32435,YNAHFEBBDJFJE00H8,location,"MadZ DC",115.6.2,"2026-11-07 02:44:38.116+00","Mining Ops Admin",mirfa
+32436,YNAHFEBBDJFJE00H8,latest_status,Repaired,Mining,"2026-11-07 02:44:38.117+00","Mining Ops Admin",mirfa
+32437,AMD61LC000L5TLC0A21SQ1001,location,31.1.2,WH1,"2026-11-07 02:44:38.118+00","Mining Ops Admin",mirfa
+32438,AMD61LC000L5TLC0A21SQ1001,latest_status,Mining,"For Repair","2026-11-07 02:44:38.118+00","Mining Ops Admin",mirfa
+32439,AME31LC000P24TC0A26QG1801,location,21.12.1,31.1.2,"2026-11-07 02:44:38.118+00","Mining Ops Admin",mirfa
+32440,JYZZEAABCJCBE00KD,location,24.4.8,WH1,"2026-11-07 02:44:38.118+00","Mining Ops Admin",mirfa
+32441,JYZZEAABCJCBE00KD,latest_status,Mining,"For Diagnosis","2026-11-07 02:44:38.118+00","Mining Ops Admin",mirfa
+32442,AME31LC000P3E0C0A26QG2001,location,32.6.10,WH1,"2026-11-07 02:44:38.118+00","Mining Ops Admin",mirfa
+32443,AME31LC000P3E0C0A26QG2001,latest_status,Mining,"For Repair","2026-11-07 02:44:38.118+00","Mining Ops Admin",mirfa
+32444,AME31LC000P80GC0A26QG2702,location,21.12.13,32.6.10,"2026-11-07 02:44:38.118+00","Mining Ops Admin",mirfa
+32445,JYZZEABBCJEBB0EP7,location,34.12.1,WH1,"2026-11-07 02:44:38.118+00","Mining Ops Admin",mirfa
+32446,JYZZEABBCJEBB0EP7,latest_status,Mining,"For Diagnosis","2026-11-07 02:44:38.118+00","Mining Ops Admin",mirfa
+32447,JYZZEAABCJEBB0J3M,location,20.1.11,WH1,"2026-11-07 02:44:38.119+00","Mining Ops Admin",mirfa
+32448,JYZZEAABCJEBB0J3M,latest_status,Mining,"For Diagnosis","2026-11-07 02:44:38.119+00","Mining Ops Admin",mirfa
+32449,JYZZEABBCJEBB0ZKD,location,Warehouse,24.4.8,"2026-11-07 02:44:38.119+00","Mining Ops Admin",mirfa
+32450,JYZZEABBCJEBB0ZKD,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.119+00","Mining Ops Admin",mirfa
+32451,JYZZEAABCJCBE022E,location,20.1.6,WH1,"2026-11-07 02:44:38.12+00","Mining Ops Admin",mirfa
+32452,JYZZEAABCJCBE022E,latest_status,Mining,"For Diagnosis","2026-11-07 02:44:38.12+00","Mining Ops Admin",mirfa
+32453,JYZZEAABCJEBB0ZAZ,location,Warehouse,20.1.6,"2026-11-07 02:44:38.12+00","Mining Ops Admin",mirfa
+32454,JYZZEAABCJEBB0ZAZ,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.12+00","Mining Ops Admin",mirfa
+32455,JYZZEABBCJFBH0MCL,location,Warehouse,20.1.11,"2026-11-07 02:44:38.12+00","Mining Ops Admin",mirfa
+32456,JYZZEABBCJFBH0MCL,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.121+00","Mining Ops Admin",mirfa
+32457,NGSBEABBCJDAA01HA,location,Warehouse,34.12.1,"2026-11-07 02:44:38.121+00","Mining Ops Admin",mirfa
+32458,NGSBEABBCJDAA01HA,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.122+00","Mining Ops Admin",mirfa
+32459,AME31LC000P4N5C0A26QG2101,location,21.12.8,2.7.4,"2026-11-07 02:44:38.122+00","Mining Ops Admin",mirfa
+32460,AMD61LC000N76WC0A21QE0101,location,21.12.16,WH1,"2026-11-07 02:44:38.122+00","Mining Ops Admin",mirfa
+32461,AMD61LC000N76WC0A21QE0101,latest_status,Mining,"For Repair","2026-11-07 02:44:38.122+00","Mining Ops Admin",mirfa
+32462,AMD61LC000L361C2A21SN2403,location,21.12.7,WH1,"2026-11-07 02:44:38.122+00","Mining Ops Admin",mirfa
+32463,AMD61LC000L361C2A21SN2403,latest_status,Mining,"For Repair","2026-11-07 02:44:38.122+00","Mining Ops Admin",mirfa
+32464,AMD61LC000N7ANC0A21QE0101,location,21.12.6,WH1,"2026-11-07 02:44:38.122+00","Mining Ops Admin",mirfa
+32465,AMD61LC000N7ANC0A21QE0101,latest_status,Mining,"For Repair","2026-11-07 02:44:38.122+00","Mining Ops Admin",mirfa
+32466,AMD61LC000N7AZC0A21QE0101,location,21.12.5,WH1,"2026-11-07 02:44:38.122+00","Mining Ops Admin",mirfa
+32467,AMD61LC000N7AZC0A21QE0101,latest_status,Mining,"For Repair","2026-11-07 02:44:38.122+00","Mining Ops Admin",mirfa
+32468,AMD61LC000N7B4C0A21QE0101,location,21.12.9,WH1,"2026-11-07 02:44:38.122+00","Mining Ops Admin",mirfa
+32469,AMD61LC000N7B4C0A21QE0101,latest_status,Mining,"For Repair","2026-11-07 02:44:38.122+00","Mining Ops Admin",mirfa
+32470,NGSBEAABCJCJA0519,location,Warehouse,21.12.7,"2026-11-07 02:44:38.122+00","Mining Ops Admin",mirfa
+32471,NGSBEAABCJCJA0519,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.123+00","Mining Ops Admin",mirfa
+32472,NGSBEAABCJCJA0581,location,Warehouse,21.12.14,"2026-11-07 02:44:38.123+00","Mining Ops Admin",mirfa
+32473,NGSBEAABCJCJA0581,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.123+00","Mining Ops Admin",mirfa
+32474,SMTTEABBCJCJF024X,location,Warehouse,21.12.16,"2026-11-07 02:44:38.124+00","Mining Ops Admin",mirfa
+32475,SMTTEABBCJCJF024X,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.124+00","Mining Ops Admin",mirfa
+32476,SMTTEABBCJCJF07VY,location,Warehouse,21.12.9,"2026-11-07 02:44:38.125+00","Mining Ops Admin",mirfa
+32477,SMTTEABBCJCJF07VY,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.125+00","Mining Ops Admin",mirfa
+32478,SMTTEABBCJCJF087Y,location,Warehouse,21.12.12,"2026-11-07 02:44:38.126+00","Mining Ops Admin",mirfa
+32479,SMTTEABBCJCJF087Y,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.126+00","Mining Ops Admin",mirfa
+32480,JYZZEAABCJHJH015E,location,Warehouse,21.12.1,"2026-11-07 02:44:38.127+00","Mining Ops Admin",mirfa
+32481,JYZZEAABCJHJH015E,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.127+00","Mining Ops Admin",mirfa
+32482,JYZZEABBCJEBB00V2,location,Warehouse,21.12.4,"2026-11-07 02:44:38.127+00","Mining Ops Admin",mirfa
+32483,JYZZEABBCJEBB00V2,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.128+00","Mining Ops Admin",mirfa
+32484,JYZZEABBCJFBH08GL,location,Warehouse,21.12.5,"2026-11-07 02:44:38.128+00","Mining Ops Admin",mirfa
+32485,JYZZEABBCJFBH08GL,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.128+00","Mining Ops Admin",mirfa
+32486,AME31LC000P75CC0A26QG2503,location,21.12.3,WH1,"2026-11-07 02:44:38.129+00","Mining Ops Admin",mirfa
+32487,AME31LC000P75CC0A26QG2503,latest_status,Mining,Repaired,"2026-11-07 02:44:38.129+00","Mining Ops Admin",mirfa
+32488,AME31LC000P2UGC0A26QG1901,location,21.12.15,WH1,"2026-11-07 02:44:38.129+00","Mining Ops Admin",mirfa
+32489,AME31LC000P2UGC0A26QG1901,latest_status,Mining,Repaired,"2026-11-07 02:44:38.129+00","Mining Ops Admin",mirfa
+32490,JYZZEABBCJFBH08SY,location,Warehouse,21.12.11,"2026-11-07 02:44:38.129+00","Mining Ops Admin",mirfa
+32491,JYZZEABBCJFBH08SY,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.129+00","Mining Ops Admin",mirfa
+32492,JYZZEABBCJFBH08FJ,location,Warehouse,21.12.3,"2026-11-07 02:44:38.13+00","Mining Ops Admin",mirfa
+32493,JYZZEABBCJFBH08FJ,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.13+00","Mining Ops Admin",mirfa
+32494,NGSBEAABCJCJA0499,location,Warehouse,21.12.13,"2026-11-07 02:44:38.13+00","Mining Ops Admin",mirfa
+32495,NGSBEAABCJCJA0499,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.131+00","Mining Ops Admin",mirfa
+32496,JYZZEAABCJBBG0154,location,Warehouse,21.12.2,"2026-11-07 02:44:38.131+00","Mining Ops Admin",mirfa
+32497,JYZZEAABCJBBG0154,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.131+00","Mining Ops Admin",mirfa
+32498,JYZZEABBCJFBH0KCV,location,Warehouse,21.12.15,"2026-11-07 02:44:38.132+00","Mining Ops Admin",mirfa
+32499,JYZZEABBCJFBH0KCV,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.132+00","Mining Ops Admin",mirfa
+32500,AME31LC000P2ZZC0A26QG1901,location,21.12.2,WH1,"2026-11-07 02:44:38.132+00","Mining Ops Admin",mirfa
+32501,AME31LC000P2ZZC0A26QG1901,latest_status,Mining,Repaired,"2026-11-07 02:44:38.132+00","Mining Ops Admin",mirfa
+32502,AME31LC000P2WRC0A26QG1901,location,21.12.10,WH1,"2026-11-07 02:44:38.132+00","Mining Ops Admin",mirfa
+32503,AME31LC000P2WRC0A26QG1901,latest_status,Mining,"For Repair","2026-11-07 02:44:38.133+00","Mining Ops Admin",mirfa
+32504,AMD61LC000N7BSC0A21QE0101,location,21.12.12,WH1,"2026-11-07 02:44:38.133+00","Mining Ops Admin",mirfa
+32505,AMD61LC000N7BSC0A21QE0101,latest_status,Mining,"For Repair","2026-11-07 02:44:38.133+00","Mining Ops Admin",mirfa
+32506,AME31LC000P4L7C0A26QG2101,location,21.12.14,WH1,"2026-11-07 02:44:38.133+00","Mining Ops Admin",mirfa
+32507,AME31LC000P4L7C0A26QG2101,latest_status,Mining,Repaired,"2026-11-07 02:44:38.133+00","Mining Ops Admin",mirfa
+32508,AME31LC000P3D0C0A26QG2001,location,21.12.4,WH1,"2026-11-07 02:44:38.133+00","Mining Ops Admin",mirfa
+32509,AME31LC000P3D0C0A26QG2001,latest_status,Mining,"For Repair","2026-11-07 02:44:38.133+00","Mining Ops Admin",mirfa
+32510,JYZZEAABCJEBB0XX1,location,Warehouse,21.12.6,"2026-11-07 02:44:38.133+00","Mining Ops Admin",mirfa
+32511,JYZZEAABCJEBB0XX1,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.133+00","Mining Ops Admin",mirfa
+32512,JYZZEAABCJHJH00MC,location,Warehouse,21.12.10,"2026-11-07 02:44:38.133+00","Mining Ops Admin",mirfa
+32513,JYZZEAABCJHJH00MC,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.134+00","Mining Ops Admin",mirfa
+32514,JYZZEAABCJHJH00YX,location,Warehouse,21.12.8,"2026-11-07 02:44:38.134+00","Mining Ops Admin",mirfa
+32515,JYZZEAABCJHJH00YX,latest_status,Consolidated,Mining,"2026-11-07 02:44:38.134+00","Mining Ops Admin",mirfa
+32516,AME31LC000P6VRC0A26QG2503,location,2.7.4,WH1,"2026-11-07 02:44:38.134+00","Mining Ops Admin",mirfa
+32517,AME31LC000P6VRC0A26QG2503,latest_status,Mining,"For Repair","2026-11-07 02:44:38.134+00","Mining Ops Admin",mirfa
+32518,"MIRFA IMPORT",mirfa_import,"","136 saved, 0 failed","2026-11-07 02:44:38.522+00","Mining Ops Admin",mirfa
+32519,AME31LC000MKSTC2A26QA2404,swap,19.7.9·Mining,"Warehouse 1 · For Diagnosis","2026-11-08 02:25:10.773+00","Mining Ops Admin",madz
+32520,AME31LC000MRW1C0A26QC0103,swap,"Warehouse 2·Ready For Deployment - Repaired By PSU swap",19.7.9·Mining,"2026-11-08 02:25:10.774+00","Mining Ops Admin",madz
+32521,AME31LC000N2MRC0A26QC2303,swap,25.9.7·Mining,"Warehouse 1 · For Diagnosis","2026-11-08 02:25:10.774+00","Mining Ops Admin",madz
+32522,AME31LC000MTNPC0A26QC0204,swap,"Warehouse 2·Ready For Deployment",25.9.7·Mining,"2026-11-08 02:25:10.774+00","Mining Ops Admin",madz
+32523,AME31LC000MZ2SC0A26QC1902,swap,22.3.3·Mining,"Warehouse 1 · For Diagnosis","2026-11-08 02:25:10.774+00","Mining Ops Admin",madz
+32524,AME31LC000MKVVC2A26QA2404,swap,"Warehouse 2·Ready For Deployment",22.3.3·Mining,"2026-11-08 02:25:10.775+00","Mining Ops Admin",madz
+32525,JYZZEAABCJHJH0097,swap,11.4.2·Mining,"Warehouse 1 · For Diagnosis","2026-11-08 02:28:42.905+00","Mining Ops Admin",madz
+32526,JYZZEABBCJFBH0WXV,swap,"Warehouse 2·Ready For Deployment - Consolidated",11.4.2·Mining,"2026-11-08 02:28:42.905+00","Mining Ops Admin",madz
+32527,JYZZEAABCJFBH0HV0,bulk_edit,"Warehouse 1·For Repair - 3 Faulty Boards","Warehouse 1·Ready For Deployment - Repaired","2026-11-08 02:31:33.044+00","Mining Ops Admin",madz
+32528,PCGPW1212154E5477,location,10.7.6.3,Warehouse,"2026-11-08 02:36:37.82+00","Mining Ops Admin",madz
+32529,PCGPW1212154E5477,latest_status,Deployed,"For Diagnosis","2026-11-08 02:36:37.822+00","Mining Ops Admin",madz
+32530,DGAH329BCJGBA0461,location,Warehouse,10.7.6.3,"2026-11-08 02:36:37.823+00","Mining Ops Admin",madz
+32531,DGAH329BCJGBA0461,latest_status,"Ready for Deployment",Deployed,"2026-11-08 02:36:37.823+00","Mining Ops Admin",madz
+32532,"BULK ADD",bulk_add,"","2 saved, 0 failed","2026-11-08 02:36:38.037+00","Mining Ops Admin",madz
+32533,PIEMFEBBDJDAE003T,bulk_edit,106.6.12·Mining,"Warehouse 2·For Diagnosis","2026-11-08 02:52:25.546+00","Mining Ops Admin",madz
+32534,PIEMFEBBDJDAE03W7,bulk_edit,106.3.12·Mining,"Warehouse 2·For Diagnosis","2026-11-08 02:52:25.546+00","Mining Ops Admin",madz
+32535,AME31LC000MM94C0A26QA2604,swap,25.8.11·Mining,"Warehouse 1 · For Diagnosis","2026-11-08 10:22:07.235+00","Mining Ops Admin",madz
+32536,AME31LC000MKU4C2A26QA2404,swap,"Warehouse 2·Ready For Deployment - Repaired By PSU swap",25.8.11·Mining,"2026-11-08 10:22:07.235+00","Mining Ops Admin",madz
+32537,AME31LC000P2X8C0A26QG1901,swap,20.9.8·Mining,"Warehouse 1 · For Diagnosis","2026-11-08 10:22:07.235+00","Mining Ops Admin",madz
+32538,AME31LC000P36CC0A26QG1901,swap,"Warehouse 2·Ready For Deployment - Repaired By PSU swap",20.9.8·Mining,"2026-11-08 10:22:07.236+00","Mining Ops Admin",madz
+32539,AME31LC000MQWZC0A26QA2904,swap,13.7.5·Mining,"Warehouse 1 · For Diagnosis","2026-11-09 03:18:26.171+00","Mining Ops Admin",madz
+32540,AME31LC000P38KC0A26QG2001,swap,"Warehouse 2·Ready For Deployment - Repaired By PSU swap",13.7.5·Mining,"2026-11-09 03:18:26.171+00","Mining Ops Admin",madz
+32541,AME31LC000N2PKC0A26QC2303,swap,1.5.10·Mining,"Warehouse 1 · For Diagnosis","2026-11-09 03:18:26.171+00","Mining Ops Admin",madz
+32542,AME31LC000P23EC0A26QG1801,swap,"Warehouse 2·Ready For Deployment - Repaired By PSU swap",1.5.10·Mining,"2026-11-09 03:18:26.171+00","Mining Ops Admin",madz
+32543,AME31LC000N2P3C0A26QC2303,swap,1.5.5·Mining,"Warehouse 1 · For Diagnosis","2026-11-09 03:18:26.172+00","Mining Ops Admin",madz
+32544,AME31LC000P23LC0A26QG1801,swap,"Warehouse 2·Ready For Deployment - Repaired By PSU swap",1.5.5·Mining,"2026-11-09 03:18:26.172+00","Mining Ops Admin",madz
+32545,AME31LC000P23LC0A26QG1801,swap,1.5.5·Mining,"Warehouse 1 · For Diagnosis","2026-11-09 03:20:56.482+00","Mining Ops Admin",madz
+32546,AME31LC000P31BC0A26QG1901,swap,"Warehouse 2·Ready For Deployment - Repaired By PSU swap",1.5.5·Mining,"2026-11-09 03:20:56.482+00","Mining Ops Admin",madz
+32547,AME31LC000P31BC0A26QG1901,swap,1.5.5·Mining,"Warehouse 1 · For Diagnosis","2026-11-09 03:23:02.028+00","Mining Ops Admin",madz
+32548,AME31LC000MKW0C2A26QA2404,swap,"Warehouse 2·Ready For Deployment",1.5.5·Mining,"2026-11-09 03:23:02.029+00","Mining Ops Admin",madz
+32549,PCGPW1212154E5479,location,10.21.10.2,Warehouse,"2026-11-09 09:01:03.653+00","Mining Ops Admin",madz
+32550,PCGPW1212154E5479,latest_status,Deployed,"For Diagnosis","2026-11-09 09:01:03.655+00","Mining Ops Admin",madz
+32551,PCGPW1212154E5719,location,Warehouse,10.21.10.2,"2026-11-09 09:01:03.657+00","Mining Ops Admin",madz
+32552,PCGPW1212154E5719,latest_status,"Ready for Deployment",Deployed,"2026-11-09 09:01:03.659+00","Mining Ops Admin",madz
+32553,"BULK ADD",bulk_add,"","2 saved, 0 failed","2026-11-09 09:01:03.996+00","Mining Ops Admin",madz
+32554,PCGPW1212154E5719,location,10.21.10.2,Warehouse,"2026-11-09 09:01:50.075+00","Mining Ops Admin",madz
+32555,PCGPW1212154E5719,latest_status,Deployed,"For Diagnosis","2026-11-09 09:01:50.077+00","Mining Ops Admin",madz
+32556,KLKT329BCJGAC4105,location,"",10.21.10.2,"2026-11-09 09:01:50.078+00","Mining Ops Admin",madz
+32557,KLKT329BCJGAC4105,latest_status,"",Deployed,"2026-11-09 09:01:50.08+00","Mining Ops Admin",madz
+32558,"BULK ADD",bulk_add,"","2 saved, 0 failed","2026-11-09 09:01:50.35+00","Mining Ops Admin",madz
+32559,PS1A0608000049230816000510,bulk_edit,"Warehouse·For Repair","Warehouse·Ready for Deployment – Repaired In-House","2026-11-09 09:08:52.542+00","Mining Ops Admin",madz
+32560,PS1A0608000049240125000197,bulk_edit,"Warehouse·For Repair","Warehouse·Ready for Deployment – Repaired In-House","2026-11-09 09:08:52.544+00","Mining Ops Admin",madz
+32561,PS1A0608000049230816000189,location,AME31LC000MTPPC0A26QC0204,Warehouse,"2026-11-09 09:09:42.337+00","Mining Ops Admin",madz
+32562,PS1A0608000049230816000189,latest_status,"Inside Miner","For Repair","2026-11-09 09:09:42.338+00","Mining Ops Admin",madz
+32563,PS1A0608000049240125002046,location,"",Warehouse,"2026-11-09 09:09:42.339+00","Mining Ops Admin",madz
+32564,PS1A0608000049240125002046,latest_status,"","For Repair","2026-11-09 09:09:42.34+00","Mining Ops Admin",madz
+32565,PS1A0608000049230816000450,location,"",AME31LC000MTPPC0A26QC0204,"2026-11-09 09:09:42.341+00","Mining Ops Admin",madz
+32566,PS1A0608000049230816000450,latest_status,"","Inside Miner","2026-11-09 09:09:42.342+00","Mining Ops Admin",madz
+32567,PS1A0608000049240125000759,location,"",AME31LC000P1MAC0A26QG1605,"2026-11-09 09:09:42.343+00","Mining Ops Admin",madz
+32568,PS1A0608000049240125000759,latest_status,"","Inside Miner","2026-11-09 09:09:42.343+00","Mining Ops Admin",madz
+32569,"BULK ADD",bulk_add,"","4 saved, 0 failed","2026-11-09 09:09:42.587+00","Mining Ops Admin",madz
+32570,AME31LC000MTPPC0A26QC0204,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-09 09:39:18.793+00","Mining Ops Admin",madz
+32571,AME31LC000P1MAC0A26QG1605,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-09 09:39:18.793+00","Mining Ops Admin",madz
+32572,PIEMFEBBDJDAE00D7,location,"Warehouse 2",106.3.12,"2026-11-09 10:48:19.994+00","Mining Ops Admin",madz
+32573,PIEMFEBBDJDAE00D7,latest_status,"For Diagnosis",Mining,"2026-11-09 10:48:19.997+00","Mining Ops Admin",madz
+32574,"BULK ADD",bulk_add,"","1 saved, 0 failed","2026-11-09 10:48:20.283+00","Mining Ops Admin",madz
+32575,PIEMFEABDJEJB0166,bulk_edit,"Bitmain Warehouse·For Repair - Taken Out By Repair Tech","Warehouse 2·Ready for deployment - Repaired by Bitmain Tech","2026-11-09 16:03:40.212+00","Mining Ops Admin",madz
+32576,PIEMFEBBDAAAD01D9,bulk_edit,"Bitmain Warehouse·For Repair - Taken Out By Repair Tech","Warehouse 2·Ready for deployment - Repaired by Bitmain Tech","2026-11-09 16:03:40.213+00","Mining Ops Admin",madz
+32577,PIEMFEBBDJDAE019L,bulk_edit,"Bitmain Warehouse·For Repair - Taken Out By Repair Tech","Warehouse 2·Ready for deployment - Repaired by Bitmain Tech","2026-11-09 16:03:40.214+00","Mining Ops Admin",madz
+32578,PIEMFEBBDJDAE03N9,bulk_edit,"Bitmain Warehouse·For Repair - Taken Out By Repair Tech","Warehouse 2·Ready for deployment - Repaired by Bitmain Tech","2026-11-09 16:03:40.214+00","Mining Ops Admin",madz
+32579,PIEMFEBBDJEJB00DG,bulk_edit,"Bitmain Warehouse·For Repair - Taken Out By Repair Tech","Warehouse 2·Ready for deployment - Repaired by Bitmain Tech","2026-11-09 16:03:40.215+00","Mining Ops Admin",madz
+32580,PIEMFECBDJEJB019T,bulk_edit,"Bitmain Warehouse·For Repair - Taken Out By Repair Tech","Warehouse 2·Ready for deployment - Repaired by Bitmain Tech","2026-11-09 16:03:40.216+00","Mining Ops Admin",madz
+32581,PIEMFEBBDJDAE003T,bulk_edit,"Warehouse 2·For Diagnosis","Bitmain Warehouse·For Repair - Taken Out By Repair Tech","2026-11-09 16:04:21.237+00","Mining Ops Admin",madz
+32582,PIEMFEBBDJDAE00KK,bulk_edit,"Warehouse 2·For Diagnosis","Bitmain Warehouse·For Repair - Taken Out By Repair Tech","2026-11-09 16:04:21.239+00","Mining Ops Admin",madz
+32583,PIEMFEBBDJDAE020V,bulk_edit,"Warehouse 2·For Diagnosis","Bitmain Warehouse·For Repair - Taken Out By Repair Tech","2026-11-09 16:04:21.241+00","Mining Ops Admin",madz
+32584,PIEMFEBBDJDAE03W7,bulk_edit,"Warehouse 2·For Diagnosis","Bitmain Warehouse·For Repair - Taken Out By Repair Tech","2026-11-09 16:04:21.242+00","Mining Ops Admin",madz
+32585,AME31LC000MKSTC2A26QA2404,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-10 02:30:47.485+00","Mining Ops Admin",madz
+32586,AME31LC000MKVKC2A26QA2404,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-10 02:30:47.485+00","Mining Ops Admin",madz
+32587,AME31LC000MM94C0A26QA2604,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-10 02:30:47.485+00","Mining Ops Admin",madz
+32588,AME31LC000MTPPC0A26QC0204,bulk_edit,"Warehouse 2·Ready For Deployment - Repaired By PSU swap","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-10 02:30:47.485+00","Mining Ops Admin",madz
+32589,AME31LC000N2MRC0A26QC2303,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-10 02:30:47.485+00","Mining Ops Admin",madz
+32590,AME31LC000N2P3C0A26QC2303,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-10 02:30:47.485+00","Mining Ops Admin",madz
+32591,AME31LC000N2PKC0A26QC2303,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-10 02:30:47.485+00","Mining Ops Admin",madz
+32592,AME31LC000P1LNC0A26QG1605,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-10 02:30:47.485+00","Mining Ops Admin",madz
+32593,AME31LC000P1MAC0A26QG1605,bulk_edit,"Warehouse 2·Ready For Deployment - Repaired By PSU swap","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-10 02:30:47.486+00","Mining Ops Admin",madz
+32594,AME31LC000P23LC0A26QG1801,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-10 02:30:47.486+00","Mining Ops Admin",madz
+32595,AME31LC000P31BC0A26QG1901,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-10 02:30:47.486+00","Mining Ops Admin",madz
+32596,AME31LC000P36KC0A26QG1901,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-10 02:30:47.486+00","Mining Ops Admin",madz
+32597,PS1A0608000049240125001632,location,"",Warehouse,"2026-11-10 02:35:17.945+00","Mining Ops Admin",madz
+32598,PS1A0608000049240125001632,latest_status,"","For Repair","2026-11-10 02:35:17.948+00","Mining Ops Admin",madz
+32599,PS1A0608000049230816000228,location,10.25.9.7,Warehouse,"2026-11-10 02:35:17.95+00","Mining Ops Admin",madz
+32600,PS1A0608000049230816000228,latest_status,Deployed,"For Repair","2026-11-10 02:35:17.951+00","Mining Ops Admin",madz
+32601,PS1A0608000057241115000114,location,10.19.3.13,Warehouse,"2026-11-10 02:35:17.954+00","Mining Ops Admin",madz
+32602,PS1A0608000057241115000114,latest_status,Deployed,"For Repair","2026-11-10 02:35:17.956+00","Mining Ops Admin",madz
+32603,PS1A0608000049230816000759,location,"",Warehouse,"2026-11-10 02:35:17.958+00","Mining Ops Admin",madz
+32604,PS1A0608000049230816000759,latest_status,"","For Repair","2026-11-10 02:35:17.959+00","Mining Ops Admin",madz
+32605,PS1A0608000049230816000362,location,"",Warehouse,"2026-11-10 02:35:17.96+00","Mining Ops Admin",madz
+32606,PS1A0608000049230816000362,latest_status,"","For Repair","2026-11-10 02:35:17.963+00","Mining Ops Admin",madz
+32607,PS1A0608000049230816000510,location,Warehouse,AME31LC000P1LNC0A26QG1605,"2026-11-10 02:35:17.965+00","Mining Ops Admin",madz
+32608,PS1A0608000049230816000510,latest_status,"Ready for Deployment – Repaired In-House","Inside Miner","2026-11-10 02:35:17.966+00","Mining Ops Admin",madz
+32609,PS1A0608000049240125000197,location,Warehouse,AME31LC000N2MRC0A26QC2303,"2026-11-10 02:35:17.967+00","Mining Ops Admin",madz
+32610,PS1A0608000049240125000197,latest_status,"Ready for Deployment – Repaired In-House","Inside Miner","2026-11-10 02:35:17.967+00","Mining Ops Admin",madz
+32611,PS1A0608000049230816000279,location,Warehouse,AME31LC000N2P3C0A26QC2303,"2026-11-10 02:35:17.968+00","Mining Ops Admin",madz
+32612,PS1A0608000049230816000279,latest_status,"For Repair","Inside Miner","2026-11-10 02:35:17.968+00","Mining Ops Admin",madz
+32613,PS1A0608000049240125000036,location,Warehouse,AME31LC000MKVKC2A26QA2404,"2026-11-10 02:35:17.97+00","Mining Ops Admin",madz
+32614,PS1A0608000049240125000036,latest_status,"For Repair","Inside Miner","2026-11-10 02:35:17.972+00","Mining Ops Admin",madz
+32615,PS1A0608000049230816000511,location,Warehouse,AME31LC000P23LC0A26QG1801,"2026-11-10 02:35:17.974+00","Mining Ops Admin",madz
+32616,PS1A0608000049230816000511,latest_status,"For Repair","Inside Miner","2026-11-10 02:35:17.975+00","Mining Ops Admin",madz
+32617,"BULK ADD",bulk_add,"","12 saved, 0 failed, 2 duplicates skipped","2026-11-10 02:35:18.251+00","Mining Ops Admin",madz
+32618,AME31LC000P3HFC0A26QG2001,swap,25.6.2·Mining,"Warehouse 1 · For Diagnosis","2026-11-10 02:37:31.838+00","Mining Ops Admin",madz
+32619,AME31LC000MTPPC0A26QC0204,swap,"Warehouse 2·Ready For Deployment - Repaired By PSU swap",25.6.2·Mining,"2026-11-10 02:37:31.838+00","Mining Ops Admin",madz
+32620,PIEMFEBBDJEJB00DG,location,"Warehouse 2",106.6.12,"2026-11-10 02:53:22.03+00","Mining Ops Admin",madz
+32621,PIEMFEBBDJEJB00DG,latest_status,"Ready for deployment - Repaired by Bitmain Tech",Mining,"2026-11-10 02:53:22.035+00","Mining Ops Admin",madz
+32622,PIEMFEBBDJDAE019L,location,"Warehouse 2",106.6.6,"2026-11-10 02:53:22.038+00","Mining Ops Admin",madz
+32623,PIEMFEBBDJDAE019L,latest_status,"Ready for deployment - Repaired by Bitmain Tech",Mining,"2026-11-10 02:53:22.04+00","Mining Ops Admin",madz
+32624,PIEMFEBBDJDAE03N9,location,"Warehouse 2",106.10.2,"2026-11-10 02:53:22.043+00","Mining Ops Admin",madz
+32625,PIEMFEBBDJDAE03N9,latest_status,"Ready for deployment - Repaired by Bitmain Tech",Mining,"2026-11-10 02:53:22.044+00","Mining Ops Admin",madz
+32626,"BULK ADD",bulk_add,"","3 saved, 0 failed","2026-11-10 02:53:22.437+00","Mining Ops Admin",madz
+32627,PS1A0608000049230816000959,location,10.25.8.11,AME31LC000MM94C0A26QA2604,"2026-11-10 03:24:32.01+00","Mining Ops Admin",madz
+32628,PS1A0608000049230816000959,latest_status,Deployed,"Inside Miner","2026-11-10 03:24:32.012+00","Mining Ops Admin",madz
+32629,PS1A0608000049240420000531,location,"",AME31LC000MKSTC2A26QA2404,"2026-11-10 03:24:32.012+00","Mining Ops Admin",madz
+32630,PS1A0608000049240420000531,latest_status,"","Inside Miner","2026-11-10 03:24:32.013+00","Mining Ops Admin",madz
+32631,"BULK ADD",bulk_add,"","3 saved, 0 failed","2026-11-10 03:24:32.643+00","Mining Ops Admin",madz
+32632,AMD61LC000N7GFC0A21QE0101,location,WH1,29.11.3,"2026-11-10 06:15:15.165+00","Mining Ops Admin",mirfa
+32633,AMD61LC000N7GFC0A21QE0101,latest_status,Repaired,Mining,"2026-11-10 06:15:15.166+00","Mining Ops Admin",mirfa
+32634,AME31LC000P7XAC0A26QG2702,location,29.11.3,WH1,"2026-11-10 06:15:15.166+00","Mining Ops Admin",mirfa
+32635,AME31LC000P7XAC0A26QG2702,latest_status,Mining,"For Repair","2026-11-10 06:15:15.166+00","Mining Ops Admin",mirfa
+32636,AME31LC000P204C0A26QG1801,location,WH1,22.12.6,"2026-11-10 06:15:15.167+00","Mining Ops Admin",mirfa
+32637,AME31LC000P204C0A26QG1801,latest_status,"For Repair",Mining,"2026-11-10 06:15:15.168+00","Mining Ops Admin",mirfa
+32638,AME31LC000P7ZRC0A26QG2702,location,22.12.6,WH1,"2026-11-10 06:15:15.168+00","Mining Ops Admin",mirfa
+32639,AME31LC000P7ZRC0A26QG2702,latest_status,Mining,"For Repair","2026-11-10 06:15:15.168+00","Mining Ops Admin",mirfa
+32640,AME31LC000P4NTC0A26QG2101,location,WH1,30.8.9,"2026-11-10 06:15:15.168+00","Mining Ops Admin",mirfa
+32641,AME31LC000P4NTC0A26QG2101,latest_status,"For Repair",Mining,"2026-11-10 06:15:15.168+00","Mining Ops Admin",mirfa
+32642,AME31LC000P71PC0A26QG2503,location,WH1,16.12.1,"2026-11-10 06:15:15.168+00","Mining Ops Admin",mirfa
+32643,AME31LC000P71PC0A26QG2503,latest_status,"For Repair",Mining,"2026-11-10 06:15:15.168+00","Mining Ops Admin",mirfa
+32644,AMD61LC000L373C2A21SN2403,location,WH1,21.6.13,"2026-11-10 06:15:15.168+00","Mining Ops Admin",mirfa
+32645,AMD61LC000L373C2A21SN2403,latest_status,Repaired,Mining,"2026-11-10 06:15:15.168+00","Mining Ops Admin",mirfa
+32646,AME31LC000P72AC0A26QG2503,location,16.12.1,WH1,"2026-11-10 06:15:15.168+00","Mining Ops Admin",mirfa
+32647,AME31LC000P72AC0A26QG2503,latest_status,Mining,"For Repair","2026-11-10 06:15:15.168+00","Mining Ops Admin",mirfa
+32648,AME31LC000PVKBC0A27QL1305,location,30.8.8,WH1,"2026-11-10 06:15:15.169+00","Mining Ops Admin",mirfa
+32649,AME31LC000PVKBC0A27QL1305,latest_status,Mining,"For Repair","2026-11-10 06:15:15.169+00","Mining Ops Admin",mirfa
+32650,AME31LC000P3MKC0A26QG2001,location,21.6.13,WH1,"2026-11-10 06:15:15.169+00","Mining Ops Admin",mirfa
+32651,AME31LC000P3MKC0A26QG2001,latest_status,Mining,"For Repair","2026-11-10 06:15:15.169+00","Mining Ops Admin",mirfa
+32652,AME31LC000P2WRC0A26QG1901,location,WH1,30.8.8,"2026-11-10 06:15:15.169+00","Mining Ops Admin",mirfa
+32653,AME31LC000P2WRC0A26QG1901,latest_status,"For Repair",Mining,"2026-11-10 06:15:15.169+00","Mining Ops Admin",mirfa
+32654,AME31LC000P3HYC0A26QG2001,location,30.8.9,WH1,"2026-11-10 06:15:15.169+00","Mining Ops Admin",mirfa
+32655,AME31LC000P3HYC0A26QG2001,latest_status,Mining,"For Repair","2026-11-10 06:15:15.169+00","Mining Ops Admin",mirfa
+32656,AME31LC000P6X8C0A26QG2503,location,31.11.2,WH1,"2026-11-10 06:15:15.169+00","Mining Ops Admin",mirfa
+32657,AME31LC000P6X8C0A26QG2503,latest_status,Mining,"For Repair","2026-11-10 06:15:15.17+00","Mining Ops Admin",mirfa
+32658,AME31LC000PVGFC0A27QL1305,location,WH1,31.11.2,"2026-11-10 06:15:15.17+00","Mining Ops Admin",mirfa
+32659,AME31LC000PVGFC0A27QL1305,latest_status,"For Repair",Mining,"2026-11-10 06:15:15.17+00","Mining Ops Admin",mirfa
+32660,AME31LC000P35EC0A26QG1901,latest_status,"For Repair",Repaired,"2026-11-10 06:15:15.17+00","Mining Ops Admin",mirfa
+32661,AMF31LC000QW67C2A33QN2602,latest_status,"For Repair",Repaired,"2026-11-10 06:15:15.17+00","Mining Ops Admin",mirfa
+32662,AME31LC000P6VRC0A26QG2503,latest_status,"For Repair",Repaired,"2026-11-10 06:15:15.17+00","Mining Ops Admin",mirfa
+32663,AME31LC000P3D0C0A26QG2001,latest_status,"For Repair",Repaired,"2026-11-10 06:15:15.17+00","Mining Ops Admin",mirfa
+32664,AME31LC000P7Y5C0A26QG2702,location,2.6.14,WH1,"2026-11-10 06:15:15.17+00","Mining Ops Admin",mirfa
+32665,AME31LC000P7Y5C0A26QG2702,latest_status,Mining,"For Repair","2026-11-10 06:15:15.17+00","Mining Ops Admin",mirfa
+32666,JYZZEABBCJFBH05FY,location,6.7.14,WH1,"2026-11-10 06:15:15.17+00","Mining Ops Admin",mirfa
+32667,JYZZEABBCJFBH05FY,latest_status,Mining,"For Diagnosis","2026-11-10 06:15:15.171+00","Mining Ops Admin",mirfa
+32668,AMD61LC000N7G6C0A21QE0101,location,WH1,2.6.14,"2026-11-10 06:15:15.172+00","Mining Ops Admin",mirfa
+32669,AMD61LC000N7G6C0A21QE0101,latest_status,Repaired,Mining,"2026-11-10 06:15:15.172+00","Mining Ops Admin",mirfa
+32670,NGSBEAABCJCJA0525,location,Warehouse,6.7.14,"2026-11-10 06:15:15.172+00","Mining Ops Admin",mirfa
+32671,NGSBEAABCJCJA0525,latest_status,Consolidated,Mining,"2026-11-10 06:15:15.174+00","Mining Ops Admin",mirfa
+32672,AMD61LC000N72VC0A21QE0101,location,WH1,22.2.14,"2026-11-10 06:15:15.175+00","Mining Ops Admin",mirfa
+32673,AMD61LC000N72VC0A21QE0101,latest_status,Repaired,Mining,"2026-11-10 06:15:15.175+00","Mining Ops Admin",mirfa
+32674,AMD61LC000N7AJC0A21QE0101,location,22.2.14,WH1,"2026-11-10 06:15:15.175+00","Mining Ops Admin",mirfa
+32675,AMD61LC000N7AJC0A21QE0101,latest_status,Mining,"For Repair","2026-11-10 06:15:15.175+00","Mining Ops Admin",mirfa
+32676,JYZZEAABCJFBH00R3,latest_status,"For Diagnosis",Consolidated,"2026-11-10 06:15:15.175+00","Mining Ops Admin",mirfa
+32677,JYZZEAABCJCBE00KD,latest_status,"For Diagnosis",Consolidated,"2026-11-10 06:15:15.175+00","Mining Ops Admin",mirfa
+32678,JYZZEABBCJEBB0EP7,latest_status,"For Diagnosis",Consolidated,"2026-11-10 06:15:15.175+00","Mining Ops Admin",mirfa
+32679,JYZZEAABCJEBB0J3M,latest_status,"For Diagnosis",Consolidated,"2026-11-10 06:15:15.176+00","Mining Ops Admin",mirfa
+32680,JYZZEAABCJFBH0ENF,location,20.1.8,WH1,"2026-11-10 06:15:15.176+00","Mining Ops Admin",mirfa
+32681,JYZZEAABCJFBH0ENF,latest_status,Mining,"For Repair","2026-11-10 06:15:15.176+00","Mining Ops Admin",mirfa
+32682,JYZZEAABCJEBB0K81,latest_status,"For Diagnosis",Consolidated,"2026-11-10 06:15:15.176+00","Mining Ops Admin",mirfa
+32683,JYZZEAABCJCBE022E,latest_status,"For Diagnosis",Consolidated,"2026-11-10 06:15:15.177+00","Mining Ops Admin",mirfa
+32684,JYZZEAABCJEBB0ATP,latest_status,"For Diagnosis","For Repair","2026-11-10 06:15:15.177+00","Mining Ops Admin",mirfa
+32685,JYZZEABBCJCBE0014,latest_status,"For Diagnosis","For Repair","2026-11-10 06:15:15.177+00","Mining Ops Admin",mirfa
+32686,JYZZEABBCJFBH0BH9,latest_status,"For Diagnosis",Consolidated,"2026-11-10 06:15:15.177+00","Mining Ops Admin",mirfa
+32687,JYZZEAABCJEBB0FNN,latest_status,"For Diagnosis","For Repair","2026-11-10 06:15:15.178+00","Mining Ops Admin",mirfa
+32688,JYZZEAABCJFBH0K21,latest_status,"For Diagnosis",Consolidated,"2026-11-10 06:15:15.178+00","Mining Ops Admin",mirfa
+32689,AMD61LC000N79JC0A21QE0101,location,WH1,17.6.6,"2026-11-10 06:15:15.178+00","Mining Ops Admin",mirfa
+32690,AMD61LC000N79JC0A21QE0101,latest_status,Repaired,Mining,"2026-11-10 06:15:15.178+00","Mining Ops Admin",mirfa
+32691,AME31LC000P3E1C0A26QG2001,location,17.6.6,WH1,"2026-11-10 06:15:15.178+00","Mining Ops Admin",mirfa
+32692,AME31LC000P3E1C0A26QG2001,latest_status,Mining,"For Repair","2026-11-10 06:15:15.178+00","Mining Ops Admin",mirfa
+32693,YNAHFEBBEJABA004B,location,115.10.8,"Tech Bldg","2026-11-10 06:15:15.178+00","Mining Ops Admin",mirfa
+32694,YNAHFEBBEJABA004B,latest_status,Mining,"For Repair","2026-11-10 06:15:15.179+00","Mining Ops Admin",mirfa
+32695,YNAHFEABDJFJE01HM,location,115.10.11,"Tech Bldg","2026-11-10 06:15:15.179+00","Mining Ops Admin",mirfa
+32696,YNAHFEABDJFJE01HM,latest_status,Mining,"For Repair","2026-11-10 06:15:15.181+00","Mining Ops Admin",mirfa
+32697,PIEMFECBDJEJB0194,location,115.10.13,"Tech Bldg","2026-11-10 06:15:15.182+00","Mining Ops Admin",mirfa
+32698,PIEMFECBDJEJB0194,latest_status,Mining,"For Repair","2026-11-10 06:15:15.183+00","Mining Ops Admin",mirfa
+32699,YNAHFEABDAAAA029P,location,115.10.12,"Tech Bldg","2026-11-10 06:15:15.184+00","Mining Ops Admin",mirfa
+32700,YNAHFEABDAAAA029P,latest_status,Mining,"For Repair","2026-11-10 06:15:15.185+00","Mining Ops Admin",mirfa
+32701,"MIRFA IMPORT",mirfa_import,"","42 saved, 0 failed","2026-11-10 06:15:15.51+00","Mining Ops Admin",mirfa
+32702,AME31LC000P20EC0A26QG1801,swap,21.3.2·Mining,"Warehouse 1 · For Diagnosis","2026-11-10 06:20:19.526+00","Mining Ops Admin",madz
+32703,AME31LC000MKVKC2A26QA2404,swap,"Warehouse 2·Ready For Deployment - Repaired By PSU swap",21.3.2·Mining,"2026-11-10 06:20:19.526+00","Mining Ops Admin",madz
+32704,AME31LC000P3DPC0A26QG2001,swap,21.5.1·Mining,"Warehouse 1 · For Diagnosis","2026-11-10 06:20:19.526+00","Mining Ops Admin",madz
+32705,AME31LC000N2MRC0A26QC2303,swap,"Warehouse 2·Ready For Deployment - Repaired By PSU swap",21.5.1·Mining,"2026-11-10 06:20:19.527+00","Mining Ops Admin",madz
+32706,AME31LC000P38NC0A26QG2001,swap,21.5.2·Mining,"Warehouse 1 · For Diagnosis","2026-11-10 06:20:19.527+00","Mining Ops Admin",madz
+32707,AME31LC000P1MAC0A26QG1605,swap,"Warehouse 2·Ready For Deployment - Repaired By PSU swap",21.5.2·Mining,"2026-11-10 06:20:19.527+00","Mining Ops Admin",madz
+32708,AME31LC000P3DPC0A26QG2001,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-10 09:52:23.168+00","Mining Ops Admin",madz
