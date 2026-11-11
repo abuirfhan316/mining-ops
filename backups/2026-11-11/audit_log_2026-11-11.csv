@@ -1,0 +1,7 @@
+id,serial,field,old_value,new_value,changed_at,source,site
+32716,JYZZEAABCJEBB0FBV,location,WH1,20.1.8,"2026-11-11 03:09:38.282+00","Mining Ops Admin",mirfa
+32717,JYZZEAABCJEBB0FBV,latest_status,Consolidated,Mining,"2026-11-11 03:09:38.282+00","Mining Ops Admin",mirfa
+32718,JYZZEAABCJEBB0FBV,container,Unknown,20,"2026-11-11 03:09:38.283+00","Mining Ops Admin",mirfa
+32719,JYZZEAABCJEBB0FBV,tank,Unknown,1,"2026-11-11 03:09:38.283+00","Mining Ops Admin",mirfa
+32721,AME31LC000MRX5C0A26QC0103,swap,23.9.3·Mining,"Warehouse 1 · For Diagnosis","2026-11-11 08:04:14.138+00","Mining Ops Admin",madz
+32722,AME31LC000P1LNC0A26QG1605,swap,"Warehouse 2·Ready For Deployment - Repaired By PSU swap",23.9.3·Mining,"2026-11-11 08:04:14.139+00","Mining Ops Admin",madz
