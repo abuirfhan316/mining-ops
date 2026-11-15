@@ -1,0 +1,35 @@
+id,serial,field,old_value,new_value,changed_at,source,site
+32716,JYZZEAABCJEBB0FBV,location,WH1,20.1.8,"2026-11-11 03:09:38.282+00","Mining Ops Admin",mirfa
+32717,JYZZEAABCJEBB0FBV,latest_status,Consolidated,Mining,"2026-11-11 03:09:38.282+00","Mining Ops Admin",mirfa
+32718,JYZZEAABCJEBB0FBV,container,Unknown,20,"2026-11-11 03:09:38.283+00","Mining Ops Admin",mirfa
+32719,JYZZEAABCJEBB0FBV,tank,Unknown,1,"2026-11-11 03:09:38.283+00","Mining Ops Admin",mirfa
+32721,AME31LC000MRX5C0A26QC0103,swap,23.9.3·Mining,"Warehouse 1 · For Diagnosis","2026-11-11 08:04:14.138+00","Mining Ops Admin",madz
+32722,AME31LC000P1LNC0A26QG1605,swap,"Warehouse 2·Ready For Deployment - Repaired By PSU swap",23.9.3·Mining,"2026-11-11 08:04:14.139+00","Mining Ops Admin",madz
+32723,JYZZEABBCJEBB024L,latest_status,"For Repair - 3 Faulty Boards","Ready For Deployment - Repaired","2026-11-12 06:22:03.313+00","Mining Ops Admin",madz
+32724,"BULK ADD",bulk_add,"","1 saved, 0 failed","2026-11-12 06:22:03.584+00","Mining Ops Admin",madz
+32725,PIEMFEBBDJDAE02T2,swap,105.14.9·Mining,"Warehouse 1 · For Diagnosis","2026-11-12 06:25:34.492+00","Mining Ops Admin",madz
+32726,PIEMFEBBDAAAD01D9,swap,"Warehouse 2·Ready for deployment - Repaired by Bitmain Tech",105.14.9·Mining,"2026-11-12 06:25:34.493+00","Mining Ops Admin",madz
+32727,PIEMFEBBDJDAE03J9,swap,104.2.9·Mining,"Warehouse 1 · For Diagnosis","2026-11-12 08:26:58.327+00","Mining Ops Admin",madz
+32728,PIEMFEABDJEJB0166,swap,"Warehouse 2·Ready for deployment - Repaired by Bitmain Tech",104.2.9·Mining,"2026-11-12 08:26:58.329+00","Mining Ops Admin",madz
+32729,JYZZEAABCJHJH011R,bulk_edit,"Warehouse 1·For Repair - 3 Faulty Boards","Warehouse 1·Scrapped","2026-11-13 02:23:00.939+00","Mining Ops Admin",madz
+32730,YNAHEAABCJABD043C,bulk_edit,"Warehouse 1·For Repair - 3 Faulty Boards","Warehouse 1·Scrapped","2026-11-13 02:23:00.94+00","Mining Ops Admin",madz
+32731,JYZZEAABCJFBH0F7P,bulk_edit,"Warehouse 1·For Repair","Warehouse 1·For Repair - 3 Faulty Boards","2026-11-13 02:27:00.965+00","Mining Ops Admin",madz
+32732,JYZZEABBCJFBH0VV0,bulk_edit,"Warehouse 1·For Repair","Warehouse 1·For Repair - 3 Faulty Boards","2026-11-13 02:27:00.968+00","Mining Ops Admin",madz
+32733,JYZZEAABCJFBH0S5X,bulk_edit,"Warehouse 1·For Repair - 3 Faulty Boards","Warehouse 1·Ready For Deployment - Repaired","2026-11-13 17:18:34.916+00","Mining Ops Admin",madz
+32734,SMTTEABBCJFJB025X,swap,26.5.8·Mining,"Warehouse 1 · For Diagnosis","2026-11-15 02:41:22.707+00","Mining Ops Admin",madz
+32735,JYZZEABBCJFBH10WY,swap,"Warehouse 2·Ready For Deployment - Consolidated",26.5.8·Mining,"2026-11-15 02:41:22.708+00","Mining Ops Admin",madz
+32736,JYZZEABBCJFBH0X2Y,swap,26.7.15·Mining,"Warehouse 1 · For Diagnosis","2026-11-15 02:41:22.712+00","Mining Ops Admin",madz
+32737,JYZZEAABCJFBH099S,swap,"Warehouse 2·Ready For Deployment - Consolidated",26.7.15·Mining,"2026-11-15 02:41:22.713+00","Mining Ops Admin",madz
+32738,JYZZEABBCJFBH0WXV,swap,11.4.2·Mining,"Warehouse 1 · For Diagnosis","2026-11-15 06:31:37.264+00","Mining Ops Admin",madz
+32739,JYZZEAABCJHJH04RB,swap,"Warehouse 1·Ready For Deployment - Repaired By Masdar Team",11.4.2·Mining,"2026-11-15 06:31:37.265+00","Mining Ops Admin",madz
+32740,JYZZEAABCJHJH04RB,swap,11.4.2·Mining,"Warehouse 1 · For Diagnosis","2026-11-15 06:33:47.741+00","Mining Ops Admin",madz
+32741,JYZZEAABCJFBH0R57,swap,"Warehouse 1·Ready For Deployment",11.4.2·Mining,"2026-11-15 06:33:47.742+00","Mining Ops Admin",madz
+32742,AME31LC000P38NC0A26QG2001,bulk_edit,"Warehouse 1·For Diagnosis","Warehouse 2·Ready For Deployment - Repaired By PSU swap","2026-11-15 09:36:49.077+00","Mining Ops Admin",madz
+32743,PS1A0608000049230816000087,location,10.21.5.1,AME31LC000P3DPC0A26QG2001,"2026-11-15 09:39:25.405+00","Mining Ops Admin",madz
+32744,PS1A0608000049230816000087,latest_status,Deployed,"Inside Miner","2026-11-15 09:39:25.407+00","Mining Ops Admin",madz
+32745,PS1A0608000049240125000343,location,"",AME31LC000P38NC0A26QG2001,"2026-11-15 09:39:25.408+00","Mining Ops Admin",madz
+32746,PS1A0608000049240125000343,latest_status,"","Inside Miner","2026-11-15 09:39:25.409+00","Mining Ops Admin",madz
+32747,"BULK ADD",bulk_add,"","2 saved, 0 failed","2026-11-15 09:39:25.72+00","Mining Ops Admin",madz
+32748,PS1A0608000049230816000908,bulk_edit,"Warehouse·For Repair","Warehouse·Ready for Deployment – Repaired In-House","2026-11-15 09:42:07.662+00","Mining Ops Admin",madz
+32749,PS1A0608000049240125001069,bulk_edit,"Warehouse·For Repair","Warehouse·Ready for Deployment – Repaired In-House","2026-11-15 09:42:07.663+00","Mining Ops Admin",madz
+32750,PS1A0608000049240125001994,bulk_edit,"Warehouse·For Repair","Warehouse·Ready for Deployment – Repaired In-House","2026-11-15 09:42:07.665+00","Mining Ops Admin",madz
